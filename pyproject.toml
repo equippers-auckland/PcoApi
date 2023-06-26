@@ -22,7 +22,9 @@ classifiers = [
 ]
 requires-python = ">=3.8.1"
 dynamic = ["version"]
-dependencies = ["git+https://github.com/billdeitrick/pypco.git@v1.2.0"]
+dependencies = [
+    "pypco @ git+ssh://git@github.com/billdeitrick/pypco.git@v1.2.0",
+]
 
 
 [project.optional-dependencies]
@@ -53,7 +55,7 @@ Source = "https://github.com/billdeitrick/pypco.git"
 Tracker = "https://github.com/billdeitrick/pypco.git/issues"
 
 [tool.flit.module]
-name = "python_package"
+name = "PcoApi"
 
 [tool.bandit]
 exclude_dirs = ["build", "dist", "tests", "scripts"]
