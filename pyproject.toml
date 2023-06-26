@@ -22,7 +22,7 @@ classifiers = [
 ]
 requires-python = ">=3.8.1"
 dynamic = ["version"]
-dependencies = ["git+https://github.com/billdeitrick/pypco.git@v.1.2.0"]
+dependencies = ["git+https://github.com/billdeitrick/pypco.git@v1.2.0"]
 
 
 [project.optional-dependencies]
