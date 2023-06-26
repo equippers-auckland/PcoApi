@@ -22,13 +22,13 @@ jobs:
               python-version: 3.11
             - tools: pytest
               args: -m integration
-      runs-on: ubuntu-latest
+      runs-on: ${{ matrix.os }}
       steps:
         - uses: actions/checkout@v3.5.3
         - name: ${{ matrix.tools }}
           uses: microsoft/action-python@0.7.0
           with:
             ${{ matrix.tools }}: true
-            python_version: ${{ matrix.python_version }}
+            python_version: ${{ matrix.python-version }}
             workdir: '.'
             args: ${{ matrix.args }}
