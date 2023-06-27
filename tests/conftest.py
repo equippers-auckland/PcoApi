@@ -14,6 +14,8 @@ from typing import List
 
 import pytest
 from _pytest.nodes import Item
+from PcoApi.PcoApi import PcoApi
+from os import environ
 
 
 def pytest_collection_modifyitems(items: list[Item]):
@@ -28,3 +30,8 @@ def pytest_collection_modifyitems(items: list[Item]):
 def unit_test_mocks(monkeypatch: None):
     """Include Mocks here to execute all commands offline and fast."""
     pass
+
+
+@pytest.fixture
+def setup_real_api() -> PcoApi:
+    yield PcoApi(application_id=environ["PCO_USER"], secret=environ["PCO_PASSWD"])

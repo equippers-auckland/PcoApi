@@ -5,8 +5,24 @@
 """This is a sample python file for testing functions from the source code."""
 from __future__ import annotations
 
-
+import logging
 import pytest
+from PcoApi.PcoApi import PcoApi, Event
+from datetime import datetime, timedelta
+
+LOGGER = logging.getLogger(__name__)
+
+
+def test_request_test(setup_real_api: PcoApi):
+    last_sunday_date = datetime.fromisoformat("2023-06-24T22:00:00Z")
+    api = setup_real_api
+    sunday_auckland_event = Event(73626, "Sunday Auckland", api)
+    last_sunday_auckland_event_periods = sunday_auckland_event.get_event_period_by_date(last_sunday_date)
+    last_sunday_auckland_event_times = last_sunday_auckland_event_periods.get_event_times()
+    morning_service_headcount = last_sunday_auckland_event_times[0].get_headcounts()
+    evening_service_headcount = last_sunday_auckland_event_times[1].get_headcounts()
+    print(f"Morning Service: {morning_service_headcount}")
+    print(f"Evening Service: {evening_service_headcount}")
 
 
 def hello_test():
@@ -15,6 +31,7 @@ def hello_test():
     Pytest will not execute this code directly, since the function does not contain the suffex "test"
     """
     pass
+
 
 def test_hello(unit_test_mocks: None):
     """
@@ -30,6 +47,7 @@ def test_int_hello():
     https://docs.pytest.org/en/6.2.x/example/markers.html#automatically-adding-markers-based-on-test-names
     """
     hello_test()
+
 
 @pytest.mark.integration
 def test_integrtion():
