@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 LOGGER = logging.getLogger(__name__)
 
 
-@pytest.skip("This test is only for manual testing")
+@pytest.mark.skip(reason="This is a real API test, which requires a valid token")
 def test_request_test(setup_real_api: PcoApi):
     last_sunday_date = datetime.fromisoformat("2023-06-24T22:00:00Z")
     api = setup_real_api
