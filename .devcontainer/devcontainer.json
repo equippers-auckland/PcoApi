@@ -2,6 +2,10 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.222.0/containers/python-3-miniconda
 {
 	"name": "Python Environment",
+	"runArgs": [
+		"--env-file",
+		".devcontainer/.env"
+	],
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": ".."
