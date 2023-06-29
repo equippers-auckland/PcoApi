@@ -11,9 +11,6 @@ on:
 jobs:
   validation_ubuntu:
       name: 'Code Validation on ubuntu'
-      env:
-        PCO_USER: ${{ secrets.PCO_USER }}
-        PCO_PASSWD: ${{ secrets.PCO_PASSWD }}
       strategy:
         matrix:
           python-version: ['3.8', '3.9', '3.10.', '3.11', 'pypy3.8']
@@ -34,3 +31,6 @@ jobs:
             python_version: ${{ matrix.python-version }}
             workdir: '.'
             args: ${{ matrix.args }}
+          env:
+            PCO_USER: ${{ secrets.PCO_USER }}
+            PCO_PASSWD: ${{ secrets.PCO_PASSWD }}
