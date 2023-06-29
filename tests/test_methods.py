@@ -6,9 +6,11 @@
 from __future__ import annotations
 
 import logging
-import pytest
-from PcoApi.PcoApi import PcoApi, Event
 from datetime import datetime, timedelta
+
+import pytest
+
+from PcoApi.PcoApi import Event, PcoApi
 
 LOGGER = logging.getLogger(__name__)
 

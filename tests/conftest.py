@@ -10,12 +10,13 @@ In VSCode, Code Coverage is recorded in config.xml. Delete this file to reset re
 
 from __future__ import annotations
 
+from os import environ
 from typing import List
 
 import pytest
 from _pytest.nodes import Item
+
 from PcoApi.PcoApi import PcoApi
-from os import environ
 
 
 def pytest_collection_modifyitems(items: list[Item]):

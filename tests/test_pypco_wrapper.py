@@ -6,12 +6,14 @@
 from __future__ import annotations
 
 import logging
-from pytest import fixture
-import pytest
-from PcoApi.pypco_wrapper import PyPcoWrapper
 from datetime import datetime, timedelta
-from unittest.mock import patch, Mock, MagicMock
+from unittest.mock import MagicMock, Mock, patch
+
+import pytest
 from pypco import PCO, PCOCredentialsException
+from pytest import fixture
+
+from PcoApi.pypco_wrapper import PyPcoWrapper
 
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)

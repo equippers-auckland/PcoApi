@@ -3,9 +3,10 @@ Wrapper for the pypco library
 """
 from __future__ import annotations
 
-from typing import Optional, Any, Iterator
-import requests
+from typing import Any, Iterator, Optional
+
 import pypco
+import requests
 
 
 class PyPcoWrapper:
