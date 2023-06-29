@@ -18,24 +18,8 @@ class PcoApi(PyPcoWrapper):
         application_id: Optional[str] = None,  # pylint: disable=unsubscriptable-object
         secret: Optional[str] = None,  # pylint: disable=unsubscriptable-object
         token: Optional[str] = None,  # pylint: disable=unsubscriptable-object
-        cc_name: Optional[str] = None,  # pylint: disable=unsubscriptable-object
-        api_base: str = "https://api.planningcenteronline.com",
-        timeout: int = 60,
-        upload_url: str = "https://upload.planningcenteronline.com/v2/files",
-        upload_timeout: int = 300,
-        timeout_retries: int = 3,
     ):
-        super().__init__(
-            application_id=application_id,
-            secret=secret,
-            token=token,
-            cc_name=cc_name,
-            api_base=api_base,
-            timeout=timeout,
-            upload_url=upload_url,
-            upload_timeout=upload_timeout,
-            timeout_retries=timeout_retries,
-        )
+        super().__init__(application_id=application_id, secret=secret, token=token)
 
 
 @dataclass
