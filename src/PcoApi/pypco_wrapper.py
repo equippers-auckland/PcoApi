@@ -19,21 +19,20 @@ class PyPcoWrapper:
         secret: Optional[str] = None,  # pylint: disable=unsubscriptable-object
         token: Optional[str] = None,  # pylint: disable=unsubscriptable-object
     ):
-        self.cc_name: Optional[str] = None,  # pylint: disable=unsubscriptable-object
-        self.api_base: str = "https://api.planningcenteronline.com",
-        self.timeout: int = 60,
-        self.upload_url: str = "https://upload.planningcenteronline.com/v2/files",
-        self.upload_timeout: int = 300,
-        self.timeout_retries: int = 3,
+        api_base: str = "https://api.planningcenteronline.com"
+        timeout: int = 60
+        upload_url: str = "https://upload.planningcenteronline.com/v2/files"
+        upload_timeout: int = 300
+        timeout_retries: int = 3
         self.pco = pypco.PCO(
             application_id=application_id,
             secret=secret,
             token=token,
-            api_base=self.api_base,
-            timeout=self.timeout,
-            upload_url=self.upload_url,
-            upload_timeout=self.upload_timeout,
-            timeout_retries=self.timeout_retries,
+            api_base=api_base,
+            timeout=timeout,
+            upload_url=upload_url,
+            upload_timeout=upload_timeout,
+            timeout_retries=timeout_retries,
         )
 
     def request_response(
