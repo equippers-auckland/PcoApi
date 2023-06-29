@@ -9,11 +9,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  validation:
-      name: 'Code Validation'
+  validation_ubuntu:
+      name: 'Code Validation on ubuntu'
+      env:
+        PCO_USER: ${{ secrets.PCO_USER }}
+        PCO_PASSWD: ${{ secrets.PCO_PASSWD }}
       strategy:
         matrix:
-          os: [ubuntu-latest, macos-latest, windows-latest]
           python-version: ['3.8', '3.9', '3.10.', '3.11', 'pypy3.8']
           tools: ['black', 'bandit', 'pylint', 'flake8']
           include:
@@ -32,3 +34,55 @@ jobs:
             python_version: ${{ matrix.python-version }}
             workdir: '.'
             args: ${{ matrix.args }}
+
+  validation_macos:
+    name: 'Code Validation on macos'
+    env:
+      PCO_USER: ${{ secrets.PCO_USER }}
+      PCO_PASSWD: ${{ secrets.PCO_PASSWD }}
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10.', '3.11', 'pypy3.8']
+        tools: ['black', 'bandit', 'pylint', 'flake8']
+        include:
+          - tools: pytest
+            args: -m not integration and not gpu
+            python-version: 3.11
+          - tools: pytest
+            args: -m integration
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3.5.3
+      - name: ${{ matrix.tools }}
+        uses: microsoft/action-python@0.7.0
+        with:
+          ${{ matrix.tools }}: true
+          python_version: ${{ matrix.python-version }}
+          workdir: '.'
+          args: ${{ matrix.args }}
+
+  validation_windows:
+    name: 'Code Validation on windows'
+    env:
+      PCO_USER: ${{ secrets.PCO_USER }}
+      PCO_PASSWD: ${{ secrets.PCO_PASSWD }}
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10.', '3.11', 'pypy3.8']
+        tools: ['black', 'bandit', 'pylint', 'flake8']
+        include:
+          - tools: pytest
+            args: -m not integration and not gpu
+            python-version: 3.11
+          - tools: pytest
+            args: -m integration
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3.5.3
+      - name: ${{ matrix.tools }}
+        uses: microsoft/action-python@0.7.0
+        with:
+          ${{ matrix.tools }}: true
+          python_version: ${{ matrix.python-version }}
+          workdir: '.'
+          args: ${{ matrix.args }}
