@@ -2,10 +2,12 @@
 This implements all required enpdoints for the PCO API
 """
 from __future__ import annotations
-from PcoApi.pypco_wrapper import PyPcoWrapper
+
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List, Optional
+
+from PcoApi.pypco_wrapper import PyPcoWrapper
 
 
 class PcoApi(PyPcoWrapper):
@@ -15,9 +17,9 @@ class PcoApi(PyPcoWrapper):
 
     def __init__(
         self,
-        application_id: Optional[str] = None,  # pylint: disable=unsubscriptable-object
-        secret: Optional[str] = None,  # pylint: disable=unsubscriptable-object
-        token: Optional[str] = None,  # pylint: disable=unsubscriptable-object
+        application_id: str | None = None,  # pylint: disable=unsubscriptable-object
+        secret: str | None = None,  # pylint: disable=unsubscriptable-object
+        token: str | None = None,  # pylint: disable=unsubscriptable-object
     ):
         super().__init__(application_id=application_id, secret=secret, token=token)
 
@@ -52,7 +54,7 @@ class Event:
         self.id = id
         self.name = name
         self.api = api
-        self.periods: List[EventPeriod] = self.get_recent_event_periods()
+        self.periods: list[EventPeriod] = self.get_recent_event_periods()
 
     def get_attendance_types(self) -> dict:
         """
@@ -122,12 +124,12 @@ class EventPeriod:
         self.regular_count = regular_count
         self.volunteer_count = volunteer_count
         self.event = event
-        self.event_times: List[EventTime] = []
+        self.event_times: list[EventTime] = []
         self.api = api
 
-    def get_event_times(self) -> List[EventTime]:
+    def get_event_times(self) -> list[EventTime]:
         response = self.api.get(f"/check-ins/v2/events/{self.event.id}/event_periods/{self.id}/event_times")
-        event_times: List[EventTime] = []
+        event_times: list[EventTime] = []
         for event_time in response["data"]:
             event_times.append(
                 EventTime(

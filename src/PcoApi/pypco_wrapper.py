@@ -16,9 +16,9 @@ class PyPcoWrapper:
 
     def __init__(
         self,
-        application_id: Optional[str] = None,  # pylint: disable=unsubscriptable-object
-        secret: Optional[str] = None,  # pylint: disable=unsubscriptable-object
-        token: Optional[str] = None,  # pylint: disable=unsubscriptable-object
+        application_id: str | None = None,  # pylint: disable=unsubscriptable-object
+        secret: str | None = None,  # pylint: disable=unsubscriptable-object
+        token: str | None = None,  # pylint: disable=unsubscriptable-object
     ):
         api_base: str = "https://api.planningcenteronline.com"
         timeout: int = 60
@@ -40,8 +40,8 @@ class PyPcoWrapper:
         self,
         method: str,
         url: str,
-        payload: Optional[Any] = None,  # pylint: disable=unsubscriptable-object
-        upload: Optional[str] = None,  # pylint: disable=unsubscriptable-object
+        payload: Any | None = None,  # pylint: disable=unsubscriptable-object
+        upload: str | None = None,  # pylint: disable=unsubscriptable-object
         **params,
     ) -> requests.Response:
         """A generic entry point for making a managed request against PCO.
@@ -73,10 +73,10 @@ class PyPcoWrapper:
         self,
         method: str,
         url: str,
-        payload: Optional[Any] = None,  # pylint: disable=unsubscriptable-object
-        upload: Optional[str] = None,  # pylint: disable=unsubscriptable-object
+        payload: Any | None = None,  # pylint: disable=unsubscriptable-object
+        upload: str | None = None,  # pylint: disable=unsubscriptable-object
         **params: str,
-    ) -> Optional[dict]:  # pylint: disable=unsubscriptable-object
+    ) -> dict | None:  # pylint: disable=unsubscriptable-object
         """A generic entry point for making a managed request against PCO.
 
         This function will return the payload from the PCO response (a dict).
@@ -99,7 +99,7 @@ class PyPcoWrapper:
 
         return self.pco.request_json(method=method, url=url, payload=payload, upload=upload, **params)
 
-    def get(self, url: str, **params: str) -> Optional[dict]:  # pylint: disable=unsubscriptable-object
+    def get(self, url: str, **params: str) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Perform a GET request against the PCO API.
 
         Performs a fully managed GET request (handles ratelimiting, timeouts, etc.).
@@ -122,8 +122,8 @@ class PyPcoWrapper:
         return self.pco.get(url=url, **params)
 
     def post(
-        self, url: str, payload: Optional[dict] = None, **params: str  # pylint: disable=unsubscriptable-object
-    ) -> Optional[dict]:  # pylint: disable=unsubscriptable-object
+        self, url: str, payload: dict | None = None, **params: str  # pylint: disable=unsubscriptable-object
+    ) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Perform a POST request against the PCO API.
 
         Performs a fully managed POST request (handles ratelimiting, timeouts, etc.).
@@ -148,8 +148,8 @@ class PyPcoWrapper:
         return self.pco.post(url=url, payload=payload, **params)
 
     def patch(
-        self, url: str, payload: Optional[dict] = None, **params: str  # pylint: disable=unsubscriptable-object
-    ) -> Optional[dict]:  # pylint: disable=unsubscriptable-object
+        self, url: str, payload: dict | None = None, **params: str  # pylint: disable=unsubscriptable-object
+    ) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Perform a PATCH request against the PCO API.
 
         Performs a fully managed PATCH request (handles ratelimiting, timeouts, etc.).
@@ -235,7 +235,7 @@ class PyPcoWrapper:
 
         return self.pco.iterate(url=url, offset=offset, per_page=per_page, **params)
 
-    def upload(self, file_path: str, **params) -> Optional[dict]:  # pylint: disable=unsubscriptable-object
+    def upload(self, file_path: str, **params) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Upload the file at the specified path to PCO.
 
         Args:
@@ -255,7 +255,7 @@ class PyPcoWrapper:
         return self.pco.upload(file_path=file_path, **params)
 
     def template(
-        self, object_type: str, attributes: Optional[dict] = None
+        self, object_type: str, attributes: dict | None = None
     ) -> dict:  # pylint: disable=unsubscriptable-object
         """Get template JSON for creating a new object.
 
