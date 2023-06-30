@@ -2,12 +2,10 @@
 This implements all required enpdoints for the PCO API
 """
 from __future__ import annotations
-
+from PcoApi.pypco_wrapper import PyPcoWrapper
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List, Optional
-
-from PcoApi.pypco_wrapper import PyPcoWrapper
 
 
 class PcoApi(PyPcoWrapper):
@@ -36,6 +34,10 @@ class AttendanceType:
 
 @dataclass
 class Headcount:
+    """
+    A Headcount is a count of people for a specific Attendance Type for a Event Time
+    """
+
     id: int
     attendance_type: AttendanceType
     count: int
