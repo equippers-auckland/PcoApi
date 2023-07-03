@@ -29,6 +29,7 @@ WORKDIR ${WORKDIR}
 #RUN apt-get update && apt-get install -y \
 #    gcc \
 #    && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y git
 
 # Install Poetry into the global environment to isolate it from the venv. This prevents Poetry
 # from uninstalling parts of itself.
