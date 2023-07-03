@@ -1,99 +1,564 @@
-# Python Project Template
+# python-blueprint
 
-This project is a template for creating Python projects that follows the Python Standards declared in PEP 621. It uses a pyproject.yaml file to configure the project and Flit to simplify the build process and publish to PyPI. Flit simplifies the build and packaging process for Python projects by eliminating the need for separate setup.py and setup.cfg files. With Flit, you can manage all relevant configurations within the pyproject.toml file, streamlining development and promoting maintainability by centralizing project metadata, dependencies, and build specifications in one place.
+[![GitHub Actions][github-actions-badge]](https://github.com/johnthagen/python-blueprint/actions)
+[![Packaged with Poetry][poetry-badge]](https://python-poetry.org/)
+[![Nox][nox-badge]](https://github.com/wntrblm/nox)
+[![Code style: Black][black-badge]](https://github.com/psf/black)
+[![Ruff][ruff-badge]](https://github.com/astral-sh/ruff)
+[![Type checked with mypy][mypy-badge]](https://mypy-lang.org/)
 
-## Project Organization
+[github-actions-badge]: https://github.com/johnthagen/python-blueprint/workflows/python/badge.svg
+[poetry-badge]: https://img.shields.io/badge/packaging-poetry-cyan.svg
+[nox-badge]: https://img.shields.io/badge/%F0%9F%A6%8A-Nox-D85E00.svg
+[black-badge]: https://img.shields.io/badge/code%20style-black-000000.svg
+[ruff-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+[mypy-badge]: https://www.mypy-lang.org/static/mypy_badge.svg
 
-- `.github/workflows`: Contains GitHub Actions used for building, testing, and publishing.
-- `.devcontainer/Dockerfile`: Contains Dockerfile to build a development container for VSCode with all the necessary extensions for Python development installed.
-- `.devcontainer/devcontainer.json`: Contains the configuration for the development container for VSCode, including the Docker image to use, any additional VSCode extensions to install, and whether or not to mount the project directory into the container.
-- `.vscode/settings.json`: Contains VSCode settings specific to the project, such as the Python interpreter to use and the maximum line length for auto-formatting.
-- `src`: Place new source code here.
-- `tests`: Contains Python-based test cases to validate source code.
-- `pyproject.toml`: Contains metadata about the project and configurations for additional tools used to format, lint, type-check, and analyze Python code.
+Example Python project that demonstrates how to create a Python package using the latest
+Python testing, linting, and type checking tooling. The project contains a `fact` package that
+provides a simple implementation of the
+[factorial algorithm](https://en.wikipedia.org/wiki/Factorial) (`fact.lib`) and a command line
+interface (`fact.cli`).
 
-### `pyproject.toml`
+# Requirements
 
-The pyproject.toml file is a centralized configuration file for modern Python projects. It streamlines the development process by managing project metadata, dependencies, and development tool configurations in a single, structured file. This approach ensures consistency and maintainability, simplifying project setup and enabling developers to focus on writing quality code. Key components include project metadata, required and optional dependencies, development tool configurations (e.g., linters, formatters, and test runners), and build system specifications.
+Python 3.8+.
 
-In this particular pyproject.toml file, the [build-system] section specifies that the Flit package should be used to build the project. The [project] section provides metadata about the project, such as the name, description, authors, and classifiers. The [project.optional-dependencies] section lists optional dependencies, like pyspark, while the [project.urls] section supplies URLs for project documentation, source code, and issue tracking.
+# Package Management
 
-The file also contains various configuration sections for different tools, including bandit, black, coverage, flake8, pyright, pytest, tox, and pylint. These sections specify settings for each tool, such as the maximum line length for flake8 and the minimum code coverage percentage for coverage.
+This package uses [Poetry](https://python-poetry.org/) to manage dependencies and
+isolated [Python virtual environments](https://docs.python.org/3/library/venv.html).
 
-#### Tool Sections
+To proceed, 
+[install Poetry globally](https://python-poetry.org/docs/#installing-with-the-official-installer)
+onto your system.
 
-##### black
+## Dependencies
 
-Black is a Python code formatter that automatically reformats Python code to conform to the PEP 8 style guide. It is used to maintain a consistent code style throughout the project.
+Dependencies are defined in [`pyproject.toml`](./pyproject.toml) and specific versions are locked
+into [`poetry.lock`](./poetry.lock). This allows for exact reproducible environments across
+all machines that use the project, both during development and in production.
 
-The pyproject.toml file specifies the maximum line length and whether or not to use a "fast" mode for formatting. Black also allows for a pyproject.toml configuration file to be included in the project directory to customize its behavior.
+To install all dependencies into an isolated virtual environment:
 
-##### coverage
+> Append `--sync` to uninstall dependencies that are no longer in use from the virtual environment.
 
-Coverage is a tool for measuring code coverage during testing. It generates a report of which lines of code were executed during testing and which were not.
+```bash
+$ poetry install
+```
 
-The pyproject.toml file specifies that branch coverage should be measured and that the tests should fail if the coverage falls below 100%. Coverage can be integrated with a variety of test frameworks, including pytest.
+To [activate](https://python-poetry.org/docs/basic-usage#activating-the-virtual-environment) the
+virtual environment that is automatically created by Poetry:
 
-##### pytest
+```bash
+$ poetry shell
+```
 
-Pytest is a versatile testing framework for Python projects that simplifies test case creation and execution. It supports both pytest-style and unittest-style tests, offering flexibility in testing approaches. Key features include fixture support for clean test environments, parameterized tests to reduce code duplication, and extensibility through plugins for customization. Adopt pytest to streamline testing and tailor the framework to your project's specific needs.
+To deactivate the environment:
 
-The pyproject.toml file plays an essential role in configuring pytest for your project. It includes various test markers, such as integration, notebooks, gpu, spark, slow, and unit, which are used during testing. It also specifies options for generating test coverage reports, setting the Python path, and outputting test results in the xunit2 format. You can easily modify the pyproject.toml file to customize pytest for your project's specific needs.
+```bash
+(fact) $ exit
+```
 
-##### pylint
-Pylint is a versatile Python linter and static analysis tool that identifies errors and style issues in your code. It generates an in-depth report, presenting errors, warnings, and conventions found in the codebase. Pylint configurations are centralized in the pyproject.toml file, covering extension management, warning suppression, output formatting, and code style settings such as maximum function arguments and class attributes. The unique scoring system provided by Pylint helps developers assess and maintain code quality, ensuring a focus on readability and maintainability throughout the project's development.
+To upgrade all dependencies to their latest versions:
 
-##### pyright
-Pyright is a static type checker for Python that uses type annotations to analyze your code and catch type-related errors. It is capable of analyzing Python code that uses type annotations as well as code that uses docstrings to specify types.
+```bash
+$ poetry update
+```
 
-The pyproject.toml file contains configurations for Pyright, such as the directories to include or exclude from analysis, the virtual environment to use, and various settings for reporting missing imports and type stubs. By using Pyright, you can catch errors related to type mismatches before they even occur, which can save you time and improve the quality of your code.
+## Packaging
 
-##### flake8
-Flake8 is a code linter for Python that checks your code for style and syntax issues. It checks your code for PEP 8 style guide violations, syntax errors, and more.
+This project is designed as a Python package, meaning that it can be bundled up and redistributed
+as a single compressed file.
 
-The pyproject.toml file contains configurations for Flake8, such as the maximum line length, which errors to ignore, and which style guide to follow. By using Flake8, you can ensure that your code follows the recommended style guide and catch syntax errors before they cause problems.
+Packaging is configured by:
 
-##### tox
-In our repository, we use Tox to automate testing and building our Python package across various environments and versions. Configured through the pyproject.toml file, Tox is set up with four testing environments: py, integration, spark, and all. Each environment targets specific test categories or runs all tests together, ensuring compatibility and functionality in different scenarios.
+- [`pyproject.toml`](./pyproject.toml)
 
-The [tool.tox] section in the pyproject.toml file contains the Tox configuration details, including the legacy_tox_ini attribute. Our setup outlines the dependencies needed for each environment, as well as the test runner (e.g., pytest) and any associated commands. This ensures consistent test execution across all environments.
+To package the project as both a 
+[source distribution](https://packaging.python.org/en/latest/flow/#the-source-distribution-sdist)
+and a [wheel](https://packaging.python.org/en/latest/specifications/binary-distribution-format/):
 
-Tox helps us efficiently automate testing and building processes, maintaining the reliability and functionality of our Python package across a wide range of environments. By identifying potential compatibility issues early in the development process, we improve the quality and usability of our package. Our Tox configuration streamlines the development workflow, promoting code quality and consistency throughout the project.
+```bash
+$ poetry build
+```
 
-### Development
-#### Codespaces
-In our project, we use GitHub Codespaces to simplify development and enhance collaboration. Codespaces provides a consistent, cloud-based workspace accessible from any device with a web browser, eliminating the need for local software installations. Our configuration automatically sets up required dependencies and development tools, while customizable workspaces and seamless GitHub integration streamline the development process and improve teamwork.
+This will generate `dist/fact-1.0.0.tar.gz` and `dist/fact-1.0.0-py3-none-any.whl`.
 
-When you create a Codespace from a template repository, you initially work within the browser version of Visual Studio Code. Or, connect your local VS Code to a remote Codespace and enjoy seamless development without the hassle of local software installations. GitHub now supports this fantastic feature, making it a breeze to work on projects from any device.
+Read more about the [advantages of wheels](https://pythonwheels.com/) to understand why generating
+wheel distributions are important.
 
-To get started, simply set the desktop version of Visual Studio Code as your default editor in GitHub account settings. Then, connect to your remote Codespace from within VS Code, and watch as your development process is revolutionized! With Codespaces, you'll benefit from the consistency and flexibility of a cloud-based workspace while retaining the comfort of your local editor. Say hello to the future of development!
+## Publish Distributions to PyPI
 
-GitHub Codespaces also supports Settings Sync, a feature that synchronizes extensions, settings, and preferences across multiple devices and instances of Visual Studio Code. Whether Settings Sync is enabled by default in a Codespace depends on your pre-existing settings and whether you access the Codespace via the browser or the desktop application. With Settings Sync, you can ensure a consistent development experience across devices, making it even more convenient to work on your projects within GitHub Codespaces.
+Source and wheel redistributable packages can
+be [published to PyPI](https://python-poetry.org/docs/cli#publish) or installed
+directly from the filesystem using `pip`.
 
-#### Devcontainer
-Dev Containers in Visual Studio Code allows you to use a Docker container as a complete development environment, opening any folder or repository inside a container and taking advantage of all of VS Code's features. A devcontainer.json file in your project describes how VS Code should access or create a development container with a well-defined tool and runtime stack. You can use an image as a starting point for your devcontainer.json. An image is like a mini-disk drive with various tools and an operating system pre-installed. You can pull images from a container registry, which is a collection of repositories that store images.
+```bash
+$ poetry publish
+```
 
-Creating a dev container in VS Code involves creating a devcontainer.json file that specifies how VS Code should start the container and what actions to take after it connects. You can customize the dev container by using a Dockerfile to install new software or make other changes that persist across sessions. Additional dev container configuration is also possible, including installing additional tools, automatically installing extensions, forwarding or publishing additional ports, setting runtime arguments, reusing or extending your existing Docker Compose setup, and adding more advanced container configuration.
+> Note: To enable publishing, remove the `"Private :: Do Not Upload"`
+> [trove classifier](https://pypi.org/classifiers/).
 
-After any changes are made, you must build your dev container to ensure changes take effect. Once your dev container is functional, you can connect to and start developing within it. If the predefined container configuration does not meet your needs, you can also attach to an already running container instead. If you want to install additional software in your dev container, you can use the integrated terminal in VS Code and execute any command against the OS inside the container.
+# Enforcing Code Quality
 
-When editing the contents of the .devcontainer folder, you'll need to rebuild for changes to take effect. You can use the Dev Containers: Rebuild Container command for your container to update. However, if you rebuild the container, you will have to reinstall anything you've installed manually. To avoid this problem, you can use the postCreateCommand property in devcontainer.json. There is also a postStartCommand that executes every time the container starts.
+Automated code quality checks are performed using 
+[Nox](https://nox.thea.codes/en/stable/) and
+[`nox-poetry`](https://nox-poetry.readthedocs.io/en/stable/). Nox will automatically create virtual
+environments and run commands based on [`noxfile.py`](./noxfile.py) for unit testing, PEP 8 style
+guide checking, type checking and documentation generation.
 
-You can also use a Dockerfile to automate dev container creation. In your Dockerfile, use FROM to designate the image, and the RUN instruction to install any software. You can use && to string together multiple commands. If you don't want to create a devcontainer.json by hand, you can select the Dev Containers: Add Dev Container Configuration Files... command from the Command Palette (F1) to add the needed files to your project as a starting point, which you can further customize for your needs.
+> Note: `nox` is installed into the virtual environment automatically by the `poetry install`
+> command above. Run `poetry shell` to activate the virtual environment.
 
-#### Setup
-This project includes three files in the .devcontainer and .vscode directories that enable you to use GitHub Codespaces or Docker and VSCode locally to set up an environment that includes all the necessary extensions and tools for Python development.
+To run all default sessions:
 
-The Dockerfile specifies the base image and dependencies needed for the development container. The Dockerfile installs the necessary dependencies for the development container, including Python 3 and flit, a tool used to build and publish Python packages. It sets an environment variable to indicate that flit should be installed globally. It then copies the pyproject.toml file into the container and creates an empty README.md file. It creates a directory src/python_package and installs only the development dependencies using flit. Finally, it removes unnecessary files, including the pyproject.toml, README.md, and src directory.
+```bash
+(fact) $ nox
+```
 
-The devcontainer.json file is a configuration file that defines the development container's settings, including the Docker image to use, any additional VSCode extensions to install, and whether or not to mount the project directory into the container. It uses the python-3-miniconda container as its base, which is provided by Microsoft, and also includes customizations for VSCode, such as recommended extensions for Python development and specific settings for those extensions. In addition to the above, the settings.json file also contains a handy command that can automatically install pre-commit hooks. These hooks can help ensure the quality of the code before it's committed to the repository, improving the overall codebase and making collaboration easier.
+## Unit Testing
 
-The settings.json file is where we can customize various project-specific settings within VSCode. These settings can include auto-formatting options, auto-trimming of trailing whitespace, Git auto-fetching, and much more. By modifying this file, you can tailor the VSCode environment to your specific preferences and workflow. It also contains specific settings for Python, such as the default interpreter to use, the formatting provider, and whether to enable unittest or pytest. Additionally, it includes arguments for various tools such as Pylint, Black, Flake8, and Isort, which are specified in the pyproject.toml file.
+Unit testing is performed with [pytest](https://pytest.org/). pytest has become the de facto Python
+unit testing framework. Some key advantages over the built-in
+[unittest](https://docs.python.org/3/library/unittest.html) module are:
 
-## Getting Started
+1. Significantly less boilerplate needed for tests.
+2. PEP 8 compliant names (e.g. `pytest.raises()` instead of `self.assertRaises()`).
+3. Vibrant ecosystem of plugins.
 
-To get started with this template, simply 'Use This Template' to create a new repository and start building your project within the `src` directory. Try to open the project in GitHub Codespace, and to run the unit tests using the VS Code Test extension.
+pytest will automatically discover and run tests by recursively searching for folders and `.py`
+files prefixed with `test` for any functions prefixed by `test`.
 
-## Contributing
+The `tests` folder is created as a Python package (i.e. there is an `__init__.py` file within it)
+because this helps `pytest` uniquely namespace the test files. Without this, two test files cannot
+be named the same, even if they are in different subdirectories.
 
-This project welcomes contributions and suggestions. For details, visit the repository's [Contributor License Agreement (CLA)](https://cla.opensource.microsoft.com) and [Code of Conduct](https://opensource.microsoft.com/codeofconduct/) pages.
+Code coverage is provided by the [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/) plugin.
+
+When running a unit test Nox session (e.g. `nox -s test`), an HTML report is generated in
+the `htmlcov` folder showing each source file and which lines were executed during unit testing.
+Open `htmlcov/index.html` in a web browser to view the report. Code coverage reports help identify
+areas of the project that are currently not tested.
+
+pytest and code coverage are configured in [`pyproject.toml`](./pyproject.toml).
+
+To pass arguments to `pytest` through `nox`:
+
+```bash
+(fact) $ nox -s test -- -k invalid_factorial
+```
+
+## Code Style Checking
+
+[PEP 8](https://peps.python.org/pep-0008/) is the universally accepted style guide for
+Python code. PEP 8 code compliance is verified using [Ruff](https://github.com/astral-sh/ruff).
+Ruff is configured in the `[tool.ruff]` section of `pyproject.toml`.
+
+Some code style settings are included in [`.editorconfig`](./.editorconfig) and will be
+configured automatically in editors such as PyCharm.
+
+To lint code, run:
+
+```bash
+(fact) $ nox -s lint
+```
+
+To automatically fix fixable lint errors, run:
+
+```bash
+(fact) $ nox -s lint_fix
+```
+
+## Automated Code Formatting
+
+Code is automatically formatted using [black](https://github.com/psf/black). Imports are
+automatically sorted and grouped using [Ruff](https://github.com/astral-sh/ruff).
+
+These tools are configured by:
+
+- [`pyproject.toml`](./pyproject.toml)
+
+To automatically format code, run:
+
+```bash
+(fact) $ nox -s fmt
+```
+
+To verify code has been formatted, such as in a CI job:
+
+```bash
+(fact) $ nox -s fmt_check
+```
+
+## Type Checking
+
+[Type annotations](https://docs.python.org/3/library/typing.html) allows developers to include
+optional static typing information to Python source code. This allows static analyzers such
+as [mypy](http://mypy-lang.org/), [PyCharm](https://www.jetbrains.com/pycharm/),
+or [Pyright](https://github.com/microsoft/pyright) to check that functions are used with the
+correct types before runtime.
+
+Editors such as [PyCharm](https://www.jetbrains.com/help/pycharm/type-hinting-in-product.html) and
+VS Code are able to provide much richer auto-completion, refactoring, and type checking while the
+user types, resulting in increased productivity and correctness.
+
+```python
+def factorial(n: int) -> int:
+    ...
+```
+
+mypy is configured in [`pyproject.toml`](./pyproject.toml). To type check code, run:
+
+```bash
+(fact) $ nox -s type_check
+```
+
+See also [awesome-python-typing](https://github.com/typeddjango/awesome-python-typing).
+
+### Distributing Type Annotations
+
+[PEP 561](https://www.python.org/dev/peps/pep-0561/) defines how a Python package should
+communicate the presence of inline type annotations to static type
+checkers. [mypy's documentation](https://mypy.readthedocs.io/en/stable/installed_packages.html)
+provides further examples on how to do this.
+
+Mypy looks for the existence of a file named [`py.typed`](./src/fact/py.typed) in the root of the
+installed package to indicate that inline type annotations should be checked.
+
+## Continuous Integration
+
+Continuous integration is provided by [GitHub Actions](https://github.com/features/actions). This
+runs all tests, lints, and type checking for every commit and pull request to the repository.
+
+GitHub Actions is configured in [`.github/workflows/python.yml`](./.github/workflows/python.yml).
+
+# Documentation
+
+## Generating a User Guide
+
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) is a powerful static site
+generator that combines easy-to-write Markdown, with a number of Markdown extensions that increase
+the power of Markdown. This makes it a great fit for user guides and other technical documentation.
+
+The example MkDocs project included in this project is configured to allow the built documentation
+to be hosted at any URL or viewed offline from the file system.
+
+To build the user guide, run,
+
+```bash
+(fact) $ nox -s docs
+```
+
+and open `docs/user_guide/site/index.html` using a web browser.
+
+To build the user guide, additionally validating external URLs, run:
+
+```bash
+(fact) $ nox -s docs_check_urls
+```
+
+To build the user guide in a format suitable for viewing directly from the file system, run:
+
+```bash
+(fact) $ nox -s docs_offline
+```
+
+To build and serve the user guide with automatic rebuilding as you change the contents,
+run:
+
+```bash
+(fact) $ nox -s docs_serve
+``` 
+
+and open <http://127.0.0.1:8000> in a browser.
+
+Each time the `main` Git branch is updated, the 
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) GitHub Action will
+automatically build the user guide and publish it to [GitHub Pages](https://pages.github.com/).
+This is configured in the `docs_github_pages` Nox session. This hosted user guide
+can be viewed at <https://johnthagen.github.io/python-blueprint/>.
+
+## Generating API Documentation
+
+This project uses [mkdocstrings](https://github.com/mkdocstrings/mkdocstrings) plugin for
+MkDocs, which renders
+[Google-style docstrings](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html)
+into an MkDocs project. Google-style docstrings provide a good mix of easy-to-read docstrings in
+code as well as nicely-rendered output.
+
+```python
+"""Computes the factorial through a recursive algorithm.
+
+Args:
+    n: A positive input value.
+
+Raises:
+    InvalidFactorialError: If n is less than 0.
+
+Returns:
+    Computed factorial.
+"""
+```
+
+# Project Structure
+
+Traditionally, Python projects place the source for their packages in the root of the project
+structure, like:
+
+``` {.sourceCode .}
+fact
+├── fact
+│   ├── __init__.py
+│   ├── cli.py
+│   └── lib.py
+├── tests
+│   ├── __init__.py
+│   └── test_fact.py
+├── noxfile.py
+└── pyproject.toml
+```
+
+However, this structure
+is [known](https://docs.pytest.org/en/latest/goodpractices.html#tests-outside-application-code) to
+have bad interactions with `pytest` and `nox`, two standard tools maintaining Python projects. The
+fundamental issue is that Nox creates an isolated virtual environment for testing. By installing
+the distribution into the virtual environment, `nox` ensures that the tests pass even after the
+distribution has been packaged and installed, thereby catching any errors in packaging and
+installation scripts, which are common. Having the Python packages in the project root subverts
+this isolation for two reasons:
+
+1. Calling `python` in the project root (for example, `python -m pytest tests/`) 
+   [causes Python to add the current working directory](https://docs.pytest.org/en/latest/pythonpath.html#invoking-pytest-versus-python-m-pytest)
+   (the project root) to `sys.path`, which Python uses to find modules. Because the source
+   package `fact` is in the project root, it shadows the `fact` package installed in the Nox
+   session.
+2. Calling `pytest` directly anywhere that it can find the tests will also add the project root
+   to `sys.path` if the `tests` folder is a Python package (that is, it contains a `__init__.py`
+   file).
+   [pytest adds all folders containing packages](https://docs.pytest.org/en/latest/goodpractices.html#conventions-for-python-test-discovery)
+   to `sys.path` because it imports the tests like regular Python modules.
+
+In order to properly test the project, the source packages must not be on the Python path. To
+prevent this, there are three possible solutions:
+
+1. Remove the `__init__.py` file from `tests` and run `pytest` directly as a Nox session.
+2. Remove the `__init__.py` file from tests and change the working directory of `python -m pytest`
+   to `tests`.
+3. Move the source packages to a dedicated `src` folder.
+
+The dedicated `src` directory is the 
+[recommended solution](https://docs.pytest.org/en/latest/pythonpath.html#test-modules-conftest-py-files-inside-packages)
+by `pytest` when using Nox and the solution this blueprint promotes because it is the least brittle
+even though it deviates from the traditional Python project structure. It results is a directory
+structure like:
+
+``` {.sourceCode .}
+fact
+├── src
+│   └── fact
+│       ├── __init__.py
+│       ├── cli.py
+│       └── lib.py
+├── tests
+│   ├── __init__.py
+│   └── test_fact.py
+├── noxfile.py
+└── pyproject.toml
+```
+
+# Licensing
+
+Licensing for the project is defined in:
+
+- [`LICENSE.txt`](./LICENSE.txt)
+- [`pyproject.toml`](./pyproject.toml)
+
+This project uses a common permissive license, the MIT license.
+
+You may also want to list the licenses of all the packages that your Python project depends on.
+To automatically list the licenses for all dependencies in (and their transitive dependencies)
+using [pip-licenses](https://github.com/raimon49/pip-licenses):
+
+```bash
+(fact) $ nox -N -s licenses
+...
+ Name      Version  License     
+ click     8.1.3    BSD License 
+ colorama  0.4.4    BSD License 
+ typer     0.4.1    MIT License 
+```
+
+# Container
+
+[Docker](https://www.docker.com/) is a tool that allows for software to be packaged into isolated
+containers. It is not necessary to use Docker in a Python project, but for the purposes of
+presenting best practice examples, a Docker configuration is provided in this project. The Docker
+configuration in this repository is optimized for small size and increased security, rather than
+simplicity.
+
+Docker is configured in:
+
+- [`Dockerfile`](./Dockerfile)
+- [`.dockerignore`](./.dockerignore)
+
+To build the container image:
+
+```bash
+$ docker build --tag fact .
+```
+
+To run the image in a container:
+
+```bash
+$ docker run --rm --interactive --tty fact 5
+```
+
+> Note: If you need to install Poetry on Alpine Linux, see the pre-built 
+> [`poetry` package](https://pkgs.alpinelinux.org/packages?name=poetry&branch=edge) for that
+> platform rather than running `pip install poetry`. This avoids needing to build Poetry
+> dependencies from source.
+> 
+> ```Dockerfile
+> FROM alpine:latest
+>
+> RUN apk add --no-cache poetry
+> ```
+
+# Miscellaneous
+
+## Shebang Line
+
+The proper [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line for Python scripts is:
+
+```py
+#!/usr/bin/env python3
+```
+
+## Installing Newer Python on Ubuntu
+
+Ubuntu releases come with a default `python3` executable. This is frozen for the life of the OS
+and only receives security and bug fixes. To install a newer version of Python globally,
+consider the [deadsnakes PPA](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa).
+
+```shell
+sudo add-apt-repository ppa:deadsnakes
+sudo apt update
+sudo apt install python3.10
+```
+
+## Package Dependency Tree
+
+[`poetry show`](https://python-poetry.org/docs/cli#show) is a Poetry command for listing installed
+packages. The `--tree` option displays them in the form of a dependency tree. For large projects,
+it is often difficult to determine dependency relationships soley from manually inspecting
+`poetry.lock`.
+
+```shell
+$ poetry show --tree --only main
+
+rich 12.6.0 Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
+├── commonmark >=0.9.0,<0.10.0
+├── pygments >=2.6.0,<3.0.0
+└── typing-extensions >=4.0.0,<5.0
+typer 0.7.0 Typer, build great CLIs. Easy to code. Based on Python type hints.
+├── click >=7.1.1,<9.0.0
+│   └── colorama * 
+├── colorama >=0.4.3,<0.5.0
+├── rich >=10.11.0,<13.0.0
+│   ├── commonmark >=0.9.0,<0.10.0 
+│   ├── pygments >=2.6.0,<3.0.0 
+│   └── typing-extensions >=4.0.0,<5.0 
+└── shellingham >=1.3.0,<2.0.0
+```
+
+# PyCharm Configuration
+
+> Looking for a vivid dark color scheme for PyCharm?
+> Try [One Dark theme](https://plugins.jetbrains.com/plugin/11938-one-dark-theme).
+
+To configure [PyCharm](https://www.jetbrains.com/pycharm/) to align to the code style used in this
+project:
+
+- Settings | Search "Hard wrap at" (Note, this will be automatically set by
+  [`.editorconfig`](./.editorconfig))
+  - Editor | Code Style | General | Hard wrap at: 99
+
+- Settings | Search "Optimize Imports"
+  - Editor | Code Style | Python | Imports
+      - ☑ Sort import statements
+        - ☑ Sort imported names in "from" imports
+        - ☐ Sort plain and "from" imports separately within a group
+        - ☐ Sort case-insensitively
+      - Structure of "from" imports
+        - ◎ Leave as is
+        - ◉ Join imports with the same source
+        - ◎ Always split imports
+
+- Settings | Search "Docstrings"
+  - Tools | Python Integrated Tools | Docstrings | Docstring Format: Google
+
+- Settings | Search "pytest"
+  - Tools | Python Integrated Tools | Testing | Default test runner: pytest
+
+- Settings | Search "Force parentheses"
+  - Editor | Code Style | Python | Wrapping and Braces | "From" Import Statements
+    - ☑ Force parentheses if multiline
+
+## Integrate Code Formatters
+
+> Also consider installing the
+> [Ruff PyCharm Plugin](https://plugins.jetbrains.com/plugin/20574-ruff).
+
+To integrate
+[Black](https://black.readthedocs.io/en/stable/integrations/editors.html#pycharm-intellij-idea) and
+[Ruff](https://beta.ruff.rs/docs/editor-integrations/#pycharm-external-tool) automatic code
+formatters into PyCharm:
+
+1. Ensure that the [File Watchers Plugin](https://plugins.jetbrains.com/plugin/7177-file-watchers)
+   is installed.
+2. Open Preferences or Settings | Tools | File Watchers and select `+` | `<custom>`
+   
+ ![](docs/static/images/preferences.png)
+
+3. Fill in the following fields
+    - **Name**: `black`
+    - **File Type**: Python
+    - **Scope**: Project Files
+    - **Program**: `$PyInterpreterDirectory$/python`
+    - **Arguments**: `-m black $FilePath$`
+    - **Output paths to refresh**: `$FilePath$`
+    - **Working directory**: `$ProjectFileDir$`
+    - **Advanced Options**
+      - **Uncheck**: Auto-save edited files to trigger the watcher
+      - **Uncheck**: Trigger the watcher on external changes
+
+  ![](docs/static/images/file_watcher.png)
+
+4. Copy the watcher, and replace references to `black` in the **Name** and **Arguments** fields to
+   `ruff check --select I --fix`.
+
+![](docs/static/images/file_watcher_copy.png)
+
+Now, on `Ctrl+S`, the current source file will be automatically formatted on save.
+
+> **Tip**
+>
+> These tools work best if you properly mark directories as excluded from the project that should 
+> be, such as `.nox`. See 
+> <https://www.jetbrains.com/help/pycharm/project-tool-window.html#content_pane_context_menu> on 
+> how to Right-Click | Mark Directory as | Excluded.
+
+## Nox Support
+
+[PyCharm does not yet natively support Nox](https://youtrack.jetbrains.com/issue/PY-37302). The
+recommended way to launch Nox from PyCharm is to create a **Python** 
+[Run Configuration](https://www.jetbrains.com/help/pycharm/run-debug-configuration.html).
+
+- Beside **Script Path**, press `▼` and select **Module name**: `nox`
+- **Parameters**, enter a Nox session: `-s test`
+- **Working Directory**: Enter the path to the current project
+- Check **Emulate terminal in output console** to enable colors to be rendered properly
+
+![](docs/static/images/nox_run_configuration.png)
