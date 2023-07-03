@@ -3,7 +3,7 @@ Wrapper for the pypco library
 """
 from __future__ import annotations
 
-from typing import Any, Iterator, Optional
+from typing import Any, Iterator
 
 import pypco
 import requests
@@ -58,16 +58,18 @@ class PyPcoWrapper:
             upload(str): The path to a file to upload.
             params (obj): A dictionary or list of tuples or bytes to send in the query string.
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
         Returns:
             requests.Response: The response to this request.
         """
 
-        return self.pco.request_response(method=method, url=url, payload=payload, upload=upload, **params)
+        return self.pco.request_response(
+            method=method, url=url, payload=payload, upload=upload, **params
+        )
 
     def request_json(
         self,
@@ -76,7 +78,7 @@ class PyPcoWrapper:
         payload: Any | None = None,  # pylint: disable=unsubscriptable-object
         upload: str | None = None,  # pylint: disable=unsubscriptable-object
         **params: str,
-    ) -> dict | None:  # pylint: disable=unsubscriptable-object
+    ) -> dict[Any, Any] | None:  # pylint: disable=unsubscriptable-object
         """A generic entry point for making a managed request against PCO.
 
         This function will return the payload from the PCO response (a dict).
@@ -88,18 +90,22 @@ class PyPcoWrapper:
             upload(str): The path to a file to upload.
             params (obj): A dictionary or list of tuples or bytes to send in the query string.
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
         Returns:
             dict: The payload from the response to this request.
         """
 
-        return self.pco.request_json(method=method, url=url, payload=payload, upload=upload, **params)
+        return self.pco.request_json(
+            method=method, url=url, payload=payload, upload=upload, **params
+        )
 
-    def get(self, url: str, **params: str) -> dict | None:  # pylint: disable=unsubscriptable-object
+    def get(
+        self, url: str, **params: str
+    ) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Perform a GET request against the PCO API.
 
         Performs a fully managed GET request (handles ratelimiting, timeouts, etc.).
@@ -110,10 +116,10 @@ class PyPcoWrapper:
                 present in your URL.
             params: Any named arguments will be passed as query parameters.
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
         Returns:
             dict: The payload returned by the API for this request.
@@ -122,7 +128,10 @@ class PyPcoWrapper:
         return self.pco.get(url=url, **params)
 
     def post(
-        self, url: str, payload: dict | None = None, **params: str  # pylint: disable=unsubscriptable-object
+        self,
+        url: str,
+        payload: dict | None = None,
+        **params: str,  # pylint: disable=unsubscriptable-object
     ) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Perform a POST request against the PCO API.
 
@@ -136,10 +145,10 @@ class PyPcoWrapper:
             params: Any named arguments will be passed as query parameters. Values must
                 be of type str!
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
         Returns:
             dict: The payload returned by the API for this request.
@@ -148,7 +157,10 @@ class PyPcoWrapper:
         return self.pco.post(url=url, payload=payload, **params)
 
     def patch(
-        self, url: str, payload: dict | None = None, **params: str  # pylint: disable=unsubscriptable-object
+        self,
+        url: str,
+        payload: dict | None = None,
+        **params: str,  # pylint: disable=unsubscriptable-object
     ) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Perform a PATCH request against the PCO API.
 
@@ -162,10 +174,10 @@ class PyPcoWrapper:
             params: Any named arguments will be passed as query parameters. Values must
                 be of type str!
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
         Returns:
             dict: The payload returned by the API for this request.
@@ -185,10 +197,10 @@ class PyPcoWrapper:
             params: Any named arguments will be passed as query parameters. Values must
                 be of type str!
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
         Returns:
             requests.Response: The response object returned by the API for this request.
@@ -220,22 +232,23 @@ class PyPcoWrapper:
             params: Any additional named arguments will be passed as query parameters. Values must
                 be of type str!
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
-        Yields:
-            dict: Each object returned by the API for this request. Returns "data",
-            "included", and "meta" nodes for each response. Note that data is processed somewhat
-            before being returned from the API. Namely, includes are injected into the object(s)
-            with which they are associated. This makes it easier to process includes associated with
-            specific objects since they are accessible directly from each returned object.
+        Yields: dict: Each object returned by the API for this request. Returns "data",
+        "included", and "meta" nodes for each response. Note that data is processed somewhat
+        before being returned from the API. Namely, includes are injected into the object(s)
+        with which they are associated. This makes it easier to process includes associated with
+        specific objects since they are accessible directly from each returned object.
         """
 
         return self.pco.iterate(url=url, offset=offset, per_page=per_page, **params)
 
-    def upload(self, file_path: str, **params) -> dict | None:  # pylint: disable=unsubscriptable-object
+    def upload(
+        self, file_path: str, **params
+    ) -> dict | None:  # pylint: disable=unsubscriptable-object
         """Upload the file at the specified path to PCO.
 
         Args:
@@ -243,10 +256,10 @@ class PyPcoWrapper:
             params: Any named arguments will be passed as query parameters. Values must
                 be of type str!
 
-        Raises:
-            PCORequestTimeoutException: The request to PCO timed out the maximum number of times.
-            PCOUnexpectedRequestException: An unexpected error occurred when making your request.
-            PCORequestException: The response from the PCO API indicated an error with your request.
+        Raises: PCORequestTimeoutException: The request to PCO timed out the maximum number of
+        times. PCOUnexpectedRequestException: An unexpected error occurred when making your
+        request. PCORequestException: The response from the PCO API indicated an error with your
+        request.
 
         Returns:
             dict: The PCO response from the file upload.

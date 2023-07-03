@@ -11,15 +11,18 @@ In VSCode, Code Coverage is recorded in config.xml. Delete this file to reset re
 from __future__ import annotations
 
 from os import environ
-from typing import List
 
-import pytest
 from _pytest.nodes import Item
+import pytest
 
-from PcoApi.PcoApi import PcoApi
+from pcoapi.api import PcoApi
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-def pytest_collection_modifyitems(items: list[Item]):
+def pytest_collection_modifyitems(items: list[Item]) -> None:
     for item in items:
         if "spark" in item.nodeid:
             item.add_marker(pytest.mark.spark)
@@ -28,7 +31,7 @@ def pytest_collection_modifyitems(items: list[Item]):
 
 
 @pytest.fixture
-def unit_test_mocks(monkeypatch: None):
+def unit_test_mocks(monkeypatch: None) -> None:
     """Include Mocks here to execute all commands offline and fast."""
     pass
 

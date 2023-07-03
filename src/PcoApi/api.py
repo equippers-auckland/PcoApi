@@ -1,13 +1,12 @@
 """
-This implements all required enpdoints for the PCO API
+This implements all required endpoints for the PCO API
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from typing import List, Optional
 
-from PcoApi.pypco_wrapper import PyPcoWrapper
+from pcoapi.pypco_wrapper import PyPcoWrapper
 
 
 class PcoApi(PyPcoWrapper):
@@ -27,7 +26,7 @@ class PcoApi(PyPcoWrapper):
 @dataclass
 class AttendanceType:
     """
-    This is an Attendance Type, eg. "Sparks", "Theatre"
+    This is an Attendance Type, e.g. "Sparks", "Theatre"
     """
 
     id: int
@@ -37,7 +36,7 @@ class AttendanceType:
 @dataclass
 class Headcount:
     """
-    A Headcount is a count of people for a specific Attendance Type for a Event Time
+    A Headcount is a count of people for a specific Attendance Type for an Event Time
     """
 
     id: int
@@ -47,7 +46,7 @@ class Headcount:
 
 class Event:
     """
-    This is an Event, eg. Auckland Sunday. It can be a recurring event.
+    This is an Event, e.g. Auckland Sunday. It can be a recurring event.
     """
 
     def __init__(self, id: int, name: str, api: PcoApi):
@@ -103,7 +102,7 @@ class Event:
 
 class EventPeriod:
     """
-    This is an single Event Period or Instance of an reacurring event.
+    This is a single Event Period or Instance of a recurring event.
     """
 
     def __init__(
@@ -128,7 +127,9 @@ class EventPeriod:
         self.api = api
 
     def get_event_times(self) -> list[EventTime]:
-        response = self.api.get(f"/check-ins/v2/events/{self.event.id}/event_periods/{self.id}/event_times")
+        response = self.api.get(
+            f"/check-ins/v2/events/{self.event.id}/event_periods/{self.id}/event_times"
+        )
         event_times: list[EventTime] = []
         for event_time in response["data"]:
             event_times.append(
@@ -144,7 +145,7 @@ class EventPeriod:
 
 class EventTime:
     """
-    This is the excapt Time of an Event Period
+    This is the exact Time of an Event Period
     """
 
     def __init__(self, id: int, starts_at: datetime, event_period: EventPeriod, api: PcoApi):
