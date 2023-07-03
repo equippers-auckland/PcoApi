@@ -26,6 +26,10 @@ jobs:
         run: poetry install --only nox
       - name: Test with Nox
         run: poetry run nox -s test-${{ matrix.python-version }}
+        env:
+          PCO_USER: ${{ secrets.PCO_USER }}
+          PCO_PASSWD: ${{ secrets.PCO_PASSWD }}
+
   quality:
     runs-on: ubuntu-22.04
     strategy:
