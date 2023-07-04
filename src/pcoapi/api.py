@@ -7,20 +7,22 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from .pypco_wrapper import PyPcoWrapper
+from .people import People
 
 
-class PcoApi(PyPcoWrapper):
+class PcoApi:
     """
     This class implements all required endpoints for the PCO API
     """
 
     def __init__(
-        self,
-        application_id: str | None = None,  # pylint: disable=unsubscriptable-object
-        secret: str | None = None,  # pylint: disable=unsubscriptable-object
-        token: str | None = None,  # pylint: disable=unsubscriptable-object
+            self,
+            application_id: str | None = None,  # pylint: disable=unsubscriptable-object
+            secret: str | None = None,  # pylint: disable=unsubscriptable-object
+            token: str | None = None,  # pylint: disable=unsubscriptable-object
     ):
-        super().__init__(application_id=application_id, secret=secret, token=token)
+        self.api = PyPcoWrapper(application_id=application_id, secret=secret, token=token)
+        self.people = People(self.api)
 
 
 @dataclass
@@ -106,15 +108,15 @@ class EventPeriod:
     """
 
     def __init__(
-        self,
-        id: int,
-        starts_at: datetime,
-        ends_at: datetime,
-        guest_count: int,
-        regular_count: int,
-        volunteer_count: int,
-        event: Event,
-        api: PcoApi,
+            self,
+            id: int,
+            starts_at: datetime,
+            ends_at: datetime,
+            guest_count: int,
+            regular_count: int,
+            volunteer_count: int,
+            event: Event,
+            api: PcoApi,
     ):
         self.id = id
         self.starts_at = starts_at

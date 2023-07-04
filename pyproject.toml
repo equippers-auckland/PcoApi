@@ -76,6 +76,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.mypy]
 ignore_missing_imports = true
 strict = true
+
 # If certain strict config options are too pedantic for a project,
 # disable them selectively here by setting to false.
 

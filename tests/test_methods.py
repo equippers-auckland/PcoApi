@@ -28,7 +28,10 @@ def test_request_test(setup_real_api: PcoApi) -> None:
     print(f"Morning Service: {morning_service_headcount}")
     print(f"Evening Service: {evening_service_headcount}")
 
-
+def test_lists(setup_real_api: PcoApi) -> None:
+    api = setup_real_api
+    lists = api.people.lists.get_most_recent()
+    print(lists)
 def hello_test() -> None:
     """
     This defines the expected usage, which can then be used in various test cases. Pytest will
