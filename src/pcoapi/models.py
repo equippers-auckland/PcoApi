@@ -6,27 +6,26 @@
 
 from __future__ import annotations
 
-import json
-from typing import Any
+from pcoapi import JSONDict
 
 
-class PcoModel(object):
-
+class PcoModel:
     def __init__(self, **kwargs) -> None:
         self.param_defaults: dict[str, int | bool | str | None] = {}
 
     @classmethod
-    def new_from_json_dict(cls, json_dict: dict[str, object], **kwargs) -> PcoModel:
+    def new_from_json_dict(cls, json_dict: JSONDict, **kwargs) -> PcoModel:
         json_data = json_dict.copy()
         if kwargs:
             for key, value in kwargs.items():
                 json_data[key] = value
-        if json_data["data"]["id"]:
-            json_data["id"] = json_data["data"]["id"]
+        if "data" in json_data:
+            if "id" in json_data["data"]:
+                json_data["id"] = json_data["data"]["id"]
 
-        if json_data["data"]["attributes"]:
-            for key, value in json_data["data"]["attributes"].items():
-                json_data[key] = value
+            if "attributes" in json_data["data"]:
+                for key, value in json_data["data"]["attributes"].items():
+                    json_data[key] = value
         c: cls = cls(**json_data)
         c.__json = json_dict
         return c
@@ -56,7 +55,7 @@ class PcoList(PcoModel):
             "status": None,
             "subset": None,
             "total_people": None,
-            "updated_at": None
+            "updated_at": None,
         }
         self.id: str | None = None
         self.auto_refresh: bool | None = None
@@ -81,5 +80,5 @@ class PcoList(PcoModel):
         self.total_people: int | None = None
         self.updated_at: str | None = None
 
-        for (param, default) in self.__dict__.items():
+        for param, default in self.__dict__.items():
             setattr(self, param, kwargs.get(param, default))

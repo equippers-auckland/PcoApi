@@ -12,15 +12,15 @@ from __future__ import annotations
 
 import json
 from os import environ
-from typing import Generator, TypedDict
+from pathlib import Path
+from typing import Callable
 
 from _pytest.nodes import Item
+from dotenv import load_dotenv
 import pytest
 
-from pcoapi.api import PcoApi
 from pcoapi import JSONDict
-
-from dotenv import load_dotenv
+from pcoapi.api import PcoApi
 
 load_dotenv()
 
@@ -45,7 +45,10 @@ def setup_real_api() -> PcoApi:
 
 
 @pytest.fixture
-def load_test_data(path: str) -> Generator[JSONDict, None, None]:
-    with open(path, "r") as file:
-        data = file.read()
-    yield json.loads(data)
+def load_test_data() -> Callable[[str], JSONDict]:
+    def open_dest_data(path: str) -> JSONDict:
+        with Path(path).open as file:
+            data = file.read()
+        return json.loads(data)
+
+    return open_dest_data

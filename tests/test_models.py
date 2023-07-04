@@ -5,13 +5,11 @@
 """Here all models will be tested."""
 from __future__ import annotations
 
-import json
-from typing import Generator, TypedDict
+from typing import Callable
 
-import pytest
-
-from pcoapi.models import PcoModel, PcoList
 from pcoapi import JSONDict
+from pcoapi.models import PcoList, PcoModel
+
 
 def test_pcomodel() -> None:
     """Test the PCOModel class."""
@@ -24,9 +22,8 @@ def test_pcomodel() -> None:
     assert returned_test_data.__class__ == PcoModel
 
 
-@pytest.mark.parametrize("load_test_data", ["test_data/get_list.json"])
-def test_list_model(load_test_data: JSONDict) -> None:
-    test_list = load_test_data
+def test_list_model(load_test_data: Callable[[str], JSONDict]) -> None:
+    test_list = load_test_data("test_data/get_list.json")
     return_data: PcoList = PcoList.new_from_json_dict(test_list)
     assert return_data is not None
     assert return_data.id == test_list["data"]["id"]

@@ -6,8 +6,8 @@
 
 from __future__ import annotations
 
-from .pypco_wrapper import PyPcoWrapper
-from .models import PcoList
+from pcoapi.models import PcoList
+from pcoapi.pypco_wrapper import PyPcoWrapper
 
 
 class People:

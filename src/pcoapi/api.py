@@ -6,8 +6,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime
 
-from .pypco_wrapper import PyPcoWrapper
-from .people import People
+from pcoapi.people import People
+from pcoapi.pypco_wrapper import PyPcoWrapper
 
 
 class PcoApi:
@@ -16,10 +16,10 @@ class PcoApi:
     """
 
     def __init__(
-            self,
-            application_id: str | None = None,  # pylint: disable=unsubscriptable-object
-            secret: str | None = None,  # pylint: disable=unsubscriptable-object
-            token: str | None = None,  # pylint: disable=unsubscriptable-object
+        self,
+        application_id: str | None = None,  # pylint: disable=unsubscriptable-object
+        secret: str | None = None,  # pylint: disable=unsubscriptable-object
+        token: str | None = None,  # pylint: disable=unsubscriptable-object
     ):
         self.api = PyPcoWrapper(application_id=application_id, secret=secret, token=token)
         self.people = People(self.api)
@@ -108,15 +108,15 @@ class EventPeriod:
     """
 
     def __init__(
-            self,
-            id: int,
-            starts_at: datetime,
-            ends_at: datetime,
-            guest_count: int,
-            regular_count: int,
-            volunteer_count: int,
-            event: Event,
-            api: PcoApi,
+        self,
+        id: int,
+        starts_at: datetime,
+        ends_at: datetime,
+        guest_count: int,
+        regular_count: int,
+        volunteer_count: int,
+        event: Event,
+        api: PcoApi,
     ):
         self.id = id
         self.starts_at = starts_at
