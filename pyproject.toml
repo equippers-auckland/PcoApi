@@ -33,6 +33,7 @@ python = "^3.8, <3.12"
 rich = "*"
 typer = { version = "*", extras = ["all"] }
 pypco = { git = "https://github.com/billdeitrick/pypco.git", tag = "v1.2.0"}
+pydantic = "^2.0.1"
 
 [tool.poetry.group.nox.dependencies]
 nox-poetry = "*"
@@ -76,6 +77,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.mypy]
 ignore_missing_imports = true
 strict = true
+plugins = ["pydantic.mypy"]
 # If certain strict config options are too pedantic for a project,
 # disable them selectively here by setting to false.
 

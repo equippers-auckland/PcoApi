@@ -6,7 +6,7 @@
 
 from __future__ import annotations
 
-from pcoapi.models import PcoList
+from pcoapi.models import PcoListModel, PcoPersonModel
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
 
@@ -22,21 +22,23 @@ class Lists:
     def __init__(self, pcoapi: PyPcoWrapper) -> None:
         self.api = pcoapi
 
-    def get_most_recent(self) -> object:
+    def get_most_recent(self) -> list[PcoListModel]:
         """
         Requests the 25 most recently updated lists from the PCO API
         """
-        data = self.api.get("/people/v2/lists?order=-updated_at")
-        return [PcoList.new_from_json_dict(item) for item in data["data"]]
+        response = self.api.get("/people/v2/lists?order=-updated_at")
+        return [PcoListModel(**single_list) for single_list in response["data"]]
 
-    def get_by_id(self, list_id: int) -> object:
+    def get_by_id(self, list_id: int) -> PcoListModel:
         """
         Requests a list from the PCO API
         """
-        return self.api.get(f"/people/v2/lists/{list_id}")
+        response = self.api.get(f"/people/v2/lists/{list_id}")
+        return PcoListModel(**response["data"])
 
-    def get_people_by_id(self, list_id: int) -> object:
+    def get_people_by_id(self, list_id: int) -> list[PcoPersonModel]:
         """
         Requests the people in a list from the PCO API
         """
-        return self.api.get(f"/people/v2/lists/{list_id}/people")
+        response = self.api.get(f"/people/v2/lists/{list_id}/people")
+        return [PcoPersonModel(**single_person) for single_person in response["data"]]

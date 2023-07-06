@@ -29,7 +29,7 @@ def mock_pypco_pco() -> Generator[Mock, None, None]:
 def pypco_wrapper_instance() -> Generator[PyPcoWrapper, None, None]:
     with patch("pcoapi.pypco_wrapper.pypco.PCO", autospec=True) as mock_pypco_pco:
         pypcowrapper_instance = PyPcoWrapper(application_id="1234", secret="5678")
-        pypcowrapper_instance.api = mock_pypco_pco.return_value
+        pypcowrapper_instance.pco = mock_pypco_pco.return_value
     yield pypcowrapper_instance
 
 

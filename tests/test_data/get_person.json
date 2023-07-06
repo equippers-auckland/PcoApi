@@ -1,0 +1,104 @@
+{
+  "data": {
+    "type": "Person",
+    "id": "1234",
+    "attributes": {
+      "accounting_administrator": false,
+      "anniversary": null,
+      "avatar": "https://avatars.planningcenteronline.com/uploads/person/123213-123212/avatar.4.png",
+      "birthdate": "1985-07-04",
+      "can_create_forms": false,
+      "can_email_lists": false,
+      "child": false,
+      "created_at": "2012-09-06T12:09:52Z",
+      "demographic_avatar_url": "https://avatars.planningcenteronline.com/uploads/person/123213-123212/avatar.4.png",
+      "directory_status": "no_access",
+      "first_name": "Hans",
+      "gender": "Male",
+      "given_name": null,
+      "grade": null,
+      "graduation_year": null,
+      "inactivated_at": null,
+      "last_name": "Miller",
+      "medical_notes": null,
+      "membership": "5 Leader (Team)",
+      "middle_name": null,
+      "name": "Hans Miller",
+      "nickname": null,
+      "passed_background_check": false,
+      "people_permissions": "Viewer",
+      "remote_id": null,
+      "school_type": null,
+      "site_administrator": false,
+      "status": "active",
+      "updated_at": "2023-07-04T22:03:14Z"
+    },
+    "relationships": {
+      "primary_campus": {
+        "data": {
+          "type": "PrimaryCampus",
+          "id": "6329"
+        }
+      },
+      "gender": {
+        "data": {
+          "type": "Gender",
+          "id": "101112113"
+        }
+      }
+    },
+    "links": {
+      "": "https://api.planningcenteronline.com/people/v2/people/1234/",
+      "addresses": "https://api.planningcenteronline.com/people/v2/people/1234/addresses",
+      "apps": "https://api.planningcenteronline.com/people/v2/people/1234/apps",
+      "background_checks": "https://api.planningcenteronline.com/people/v2/people/1234/background_checks",
+      "connected_people": "https://api.planningcenteronline.com/people/v2/people/1234/connected_people",
+      "emails": "https://api.planningcenteronline.com/people/v2/people/1234/emails",
+      "field_data": "https://api.planningcenteronline.com/people/v2/people/1234/field_data",
+      "household_memberships": "https://api.planningcenteronline.com/people/v2/people/1234/household_memberships",
+      "households": "https://api.planningcenteronline.com/people/v2/people/1234/households",
+      "inactive_reason": null,
+      "marital_status": null,
+      "message_groups": "https://api.planningcenteronline.com/people/v2/people/1234/message_groups",
+      "messages": "https://api.planningcenteronline.com/people/v2/people/1234/messages",
+      "name_prefix": null,
+      "name_suffix": null,
+      "notes": "https://api.planningcenteronline.com/people/v2/people/1234/notes",
+      "organization": "https://api.planningcenteronline.com/people/v2/people/1234/organization",
+      "person_apps": "https://api.planningcenteronline.com/people/v2/people/1234/person_apps",
+      "phone_numbers": "https://api.planningcenteronline.com/people/v2/people/1234/phone_numbers",
+      "platform_notifications": "https://api.planningcenteronline.com/people/v2/people/1234/platform_notifications",
+      "primary_campus": "https://api.planningcenteronline.com/people/v2/campuses/6329",
+      "school": null,
+      "social_profiles": "https://api.planningcenteronline.com/people/v2/people/1234/social_profiles",
+      "workflow_cards": "https://api.planningcenteronline.com/people/v2/people/1234/workflow_cards",
+      "workflow_shares": "https://api.planningcenteronline.com/people/v2/people/1234/workflow_shares",
+      "self": "https://api.planningcenteronline.com/people/v2/people/1234",
+      "html": "https://people.planningcenteronline.com/people/AC1234"
+    }
+  },
+  "included": [],
+  "meta": {
+    "can_include": [
+      "addresses",
+      "emails",
+      "field_data",
+      "households",
+      "inactive_reason",
+      "marital_status",
+      "name_prefix",
+      "name_suffix",
+      "organization",
+      "person_apps",
+      "phone_numbers",
+      "platform_notifications",
+      "primary_campus",
+      "school",
+      "social_profiles"
+    ],
+    "parent": {
+      "id": "67978",
+      "type": "Organization"
+    }
+  }
+}

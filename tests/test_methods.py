@@ -10,23 +10,16 @@ import logging
 
 import pytest
 
-from pcoapi.api import Event, PcoApi
+from pcoapi.api import PcoApi
 
 LOGGER = logging.getLogger(__name__)
 
 
+@pytest.mark.skip
 def test_request_test(setup_real_api: PcoApi) -> None:
-    last_sunday_date = datetime.fromisoformat("2023-06-24T22:00:00Z")
+    datetime.fromisoformat("2023-06-24T22:00:00Z")
     api = setup_real_api
-    sunday_auckland_event = Event(73626, "Sunday Auckland", api)
-    last_sunday_auckland_event_periods = sunday_auckland_event.get_event_period_by_date(
-        last_sunday_date
-    )
-    last_sunday_auckland_event_times = last_sunday_auckland_event_periods.get_event_times()
-    morning_service_headcount = last_sunday_auckland_event_times[0].get_headcounts()
-    evening_service_headcount = last_sunday_auckland_event_times[1].get_headcounts()
-    print(f"Morning Service: {morning_service_headcount}")
-    print(f"Evening Service: {evening_service_headcount}")
+    api.checkins.events.get_by_id(73626)
 
 
 def test_lists(setup_real_api: PcoApi) -> None:

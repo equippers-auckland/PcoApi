@@ -1,0 +1,116 @@
+{
+  "links": {
+    "self": "https://api.planningcenteronline.com/people/v2/lists?%2Fpeople%2Fv2%2Flists%3Forder=-updated_at",
+    "next": "https://api.planningcenteronline.com/people/v2/lists?%2Fpeople%2Fv2%2Flists%3Forder=-updated_at&offset=25"
+  },
+  "data": [
+    {
+      "type": "List",
+      "id": "1234",
+      "attributes": {
+        "auto_refresh": true,
+        "automations_active": false,
+        "automations_count": 0,
+        "batch_completed_at": "2022-05-20T13:32:11Z",
+        "created_at": "2019-04-23T01:17:51Z",
+        "description": "Tag is 'Member'",
+        "has_inactive_results": false,
+        "include_inactive": false,
+        "invalid": true,
+        "name": "Production Ops Team",
+        "name_or_description": "Production Ops Team",
+        "paused_automations_count": 0,
+        "recently_viewed": false,
+        "refreshed_at": "2022-05-20T13:32:11Z",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "starred": false,
+        "status": "invalid",
+        "subset": "all",
+        "total_people": 0,
+        "updated_at": "2022-05-20T13:32:11Z"
+      },
+      "links": {
+        "self": "https://api.planningcenteronline.com/people/v2/lists/1234"
+      }
+    },
+    {
+      "type": "List",
+      "id": "1235",
+      "attributes": {
+        "auto_refresh": true,
+        "automations_active": false,
+        "automations_count": 0,
+        "batch_completed_at": "2022-05-20T13:32:10Z",
+        "created_at": "2019-04-23T01:21:55Z",
+        "description": "Tag is 'Member'",
+        "has_inactive_results": false,
+        "include_inactive": false,
+        "invalid": true,
+        "name": "Logistics Team",
+        "name_or_description": "Logistics Team",
+        "paused_automations_count": 0,
+        "recently_viewed": false,
+        "refreshed_at": "2022-05-20T13:32:10Z",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "starred": false,
+        "status": "invalid",
+        "subset": "all",
+        "total_people": 0,
+        "updated_at": "2022-05-20T13:32:10Z"
+      },
+      "links": {
+        "self": "https://api.planningcenteronline.com/people/v2/lists/1235"
+      }
+    }
+  ],
+  "included": [],
+  "meta": {
+    "total_managed_count": 15,
+    "total_recently_viewed_count": 1,
+    "total_starred_and_unstarred_count": 42,
+    "total_starred_count": 0,
+    "total_unfiltered_count": 42,
+    "total_count": 42,
+    "count": 25,
+    "next": {
+      "offset": 25
+    },
+    "can_order_by": [
+      "name",
+      "batch_completed_at",
+      "created_at",
+      "updated_at",
+      "campus_id",
+      "list_category_id",
+      "name_or_description"
+    ],
+    "can_query_by": [
+      "name",
+      "batch_completed_at",
+      "created_at",
+      "updated_at",
+      "id"
+    ],
+    "can_include": [
+      "campus",
+      "category",
+      "created_by",
+      "mailchimp_sync_status",
+      "people",
+      "rules",
+      "shares",
+      "updated_by"
+    ],
+    "can_filter": [
+      "starred",
+      "can_manage",
+      "recently_viewed"
+    ],
+    "parent": {
+      "id": "6329",
+      "type": "Organization"
+    }
+  }
+}

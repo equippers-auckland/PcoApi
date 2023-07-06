@@ -13,14 +13,14 @@ from __future__ import annotations
 import json
 from os import environ
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Generator
 
 from _pytest.nodes import Item
 from dotenv import load_dotenv
 import pytest
 
-from pcoapi import JSONDict
 from pcoapi.api import PcoApi
+from pcoapi.helpers import JsonObjectType
 
 load_dotenv()
 
@@ -40,15 +40,15 @@ def unit_test_mocks(monkeypatch: None) -> None:
 
 
 @pytest.fixture
-def setup_real_api() -> PcoApi:
+def setup_real_api() -> Generator[PcoApi, None, None]:
     yield PcoApi(application_id=environ["PCO_USER"], secret=environ["PCO_PASSWD"])
 
 
 @pytest.fixture
-def load_test_data() -> Callable[[str], JSONDict]:
-    def open_dest_data(path: str) -> JSONDict:
-        with Path(path).open as file:
-            data = file.read()
-        return json.loads(data)
+def load_test_data() -> Callable[[Path], JsonObjectType]:
+    def open_dest_data(path: Path) -> JsonObjectType:
+        with Path.open(path) as f:
+            data = json.load(f)
+        return data  # type: ignore
 
     return open_dest_data
