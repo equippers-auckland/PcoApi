@@ -6,6 +6,7 @@
 
 from __future__ import annotations
 
+from pcoapi.helpers import convert_response_data_to_list_of_model, convert_response_data_to_model
 from pcoapi.models import PcoListModel, PcoPersonModel
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
@@ -27,18 +28,21 @@ class Lists:
         Requests the 25 most recently updated lists from the PCO API
         """
         response = self.api.get("/people/v2/lists?order=-updated_at")
-        return [PcoListModel(**single_list) for single_list in response["data"]]
+        data_model = convert_response_data_to_list_of_model(response, PcoListModel)
+        return data_model
 
     def get_by_id(self, list_id: int) -> PcoListModel:
         """
         Requests a list from the PCO API
         """
         response = self.api.get(f"/people/v2/lists/{list_id}")
-        return PcoListModel(**response["data"])
+        data_model = convert_response_data_to_model(response, PcoListModel)
+        return data_model
 
     def get_people_by_id(self, list_id: int) -> list[PcoPersonModel]:
         """
         Requests the people in a list from the PCO API
         """
         response = self.api.get(f"/people/v2/lists/{list_id}/people")
-        return [PcoPersonModel(**single_person) for single_person in response["data"]]
+        data_model = convert_response_data_to_list_of_model(response, PcoPersonModel)
+        return data_model

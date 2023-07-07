@@ -53,6 +53,7 @@ mypy = "*"
 # See: http://mypy-lang.blogspot.com/2021/06/mypy-0900-released.html
 #      https://github.com/python/typeshed/tree/main/stubs
 
+
 [tool.poetry.group.lint.dependencies]
 ruff = "*"
 
@@ -95,7 +96,7 @@ extend-select = [
     "SIM", # flake8-simplify
     "TID", # flake8-tidy-imports
 ]
-extend-ignore = ["RUF005"]
+extend-ignore = ["RUF005", "UP007"]
 src = ["src"]
 
 [tool.ruff.isort]

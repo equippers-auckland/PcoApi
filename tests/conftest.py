@@ -47,7 +47,10 @@ def setup_real_api() -> Generator[PcoApi, None, None]:
 @pytest.fixture
 def load_test_data() -> Callable[[Path], JsonObjectType]:
     def open_dest_data(path: Path) -> JsonObjectType:
-        with Path.open(path) as f:
+        # if current folder is tests, then go up one level
+        if Path.cwd().name == "tests":
+            path = Path.cwd().parent / path
+        with Path(path).open() as f:
             data = json.load(f)
         return data  # type: ignore
 

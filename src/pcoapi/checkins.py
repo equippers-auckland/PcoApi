@@ -6,6 +6,7 @@
 
 from __future__ import annotations
 
+from pcoapi.helpers import convert_response_data_to_list_of_model, convert_response_data_to_model
 from pcoapi.models import PcoAttendanceTypesModel, PcoEventsModel, PcoEventTimesModel
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
@@ -26,11 +27,13 @@ class EventTimes:
         Requests the 25 most recent Event_times from the PCO API
         """
         response = self.api.get("/check-ins/v2/event_times?order=-starts_at")
-        return [PcoEventTimesModel(**single_event) for single_event in response["data"]]
+        filled_data_model = convert_response_data_to_list_of_model(response, PcoEventTimesModel)
+        return filled_data_model
 
     def get_by_id(self, event_time_id: int) -> PcoEventTimesModel:
         response = self.api.get(f"/check-ins/v2/event_times/{event_time_id}")
-        return PcoEventTimesModel(**response["data"])
+        filled_data_model = convert_response_data_to_model(response, PcoEventTimesModel)
+        return filled_data_model
 
 
 class Events:
@@ -39,12 +42,12 @@ class Events:
 
     def get_by_id(self, event_id: int) -> PcoEventsModel:
         response = self.api.get(f"/check-ins/v2/events/{event_id}")
-        return PcoEventsModel(**response["data"])
+        filled_data_model = convert_response_data_to_model(response, PcoEventsModel)
+        return filled_data_model
 
     def get_attendance_types(self, event_id: int) -> list[PcoAttendanceTypesModel]:
         response = self.api.get(f"/check-ins/v2/events/{event_id}/attendance_types")
-        response_data = response["data"]
-        return_list_object: list[PcoAttendanceTypesModel] = []
-        for single_attendance_type in response_data:
-            return_list_object.append(PcoAttendanceTypesModel(**single_attendance_type))
-        return return_list_object
+        filled_data_model = convert_response_data_to_list_of_model(
+            response, PcoAttendanceTypesModel
+        )
+        return filled_data_model

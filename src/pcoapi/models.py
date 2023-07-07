@@ -6,6 +6,8 @@
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import BaseModel as PydanticBaseModel
 
 
@@ -34,7 +36,7 @@ class PcoListAttributesModelModel(PcoBaseAttributesModel):
     auto_refresh: bool
     automations_active: bool
     automations_count: int
-    batch_completed_at: str
+    batch_completed_at: Union[str, None]
     created_at: str
     description: str
     has_inactive_results: bool
@@ -44,7 +46,7 @@ class PcoListAttributesModelModel(PcoBaseAttributesModel):
     name_or_description: str
     paused_automations_count: int
     recently_viewed: bool
-    refreshed_at: str
+    refreshed_at: Union[str, None]
     return_original_if_none: bool
     returns: str
     starred: bool
@@ -63,7 +65,7 @@ class PcoListModel(PcoBaseModel):
 
 class PcoPersonAttributesModel(PcoBaseAttributesModel):
     accounting_administrator: bool
-    anniversary: bool | None
+    anniversary: Union[bool, None]
     avatar: str
     birthdate: str
     can_create_forms: bool
@@ -74,20 +76,20 @@ class PcoPersonAttributesModel(PcoBaseAttributesModel):
     directory_status: str
     first_name: str
     gender: str
-    given_name: str | None
-    grade: str | None
-    graduation_year: str | None
-    inactivated_at: str | None
+    given_name: Union[str, None]
+    grade: Union[str, None]
+    graduation_year: Union[str, None]
+    inactivated_at: Union[str, None]
     last_name: str
-    medical_notes: str | None
+    medical_notes: Union[str, None]
     membership: str
-    middle_name: str | None
+    middle_name: Union[str, None]
     name: str
-    nickname: str | None
+    nickname: Union[str, None]
     passed_background_check: bool
-    people_permissions: str | None
-    remote_id: str | None
-    school_type: str | None
+    people_permissions: Union[str, None]
+    remote_id: Union[str, None]
+    school_type: Union[str, None]
     site_administrator: bool
     status: str
     updated_at: str
@@ -120,11 +122,11 @@ class PcoPersonModel(PcoBaseModel):
 
 
 class PcoEventsAttributesModel(PcoBaseAttributesModel):
-    archived_at: str | None
+    archived_at: Union[str, None]
     created_at: str
     enable_services_integration: bool
     frequency: str
-    integration_key: str | None
+    integration_key: Union[str, None]
     location_times_enabled: bool
     name: str
     pre_select_enabled: bool
@@ -162,7 +164,7 @@ class PcoEventPeriodsAttributesModel(PcoBaseAttributesModel):
     created_at: str
     ends_at: str
     guest_count: int
-    notes: str | None
+    notes: Union[str, None]
     regular_count: int
     starts_at: str
     updated_at: str
@@ -196,7 +198,7 @@ class PcoEventTimesAttributesModel(PcoBaseAttributesModel):
     hides_at: str
     hour: int
     minute: int
-    name: str | None
+    name: Union[str, None]
     regular_count: int
     shows_at: str
     starts_at: str
@@ -225,7 +227,7 @@ class PcoEventTimesModel(PcoBaseModel):
 class PcoAttendanceTypeAttributesModel(PcoBaseAttributesModel):
     color: str
     created_at: str
-    limit: int | None
+    limit: Union[int, None]
     name: str
     updated_at: str
 
