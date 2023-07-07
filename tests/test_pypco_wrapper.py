@@ -72,6 +72,23 @@ class TestPyPcoWrapper:
             params=None,
         )
 
+    def test_request_json(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
+        assert (
+            pypco_wrapper_instance.request_json(
+                method="GET",
+                url="/services/v2/event_times",
+                payload=None,
+                upload=None,
+            )
+            == pypco_wrapper_instance.pco.request_json.return_value
+        )
+        pypco_wrapper_instance.pco.request_json.assert_called_once_with(
+            method="GET",
+            url="/services/v2/event_times",
+            payload=None,
+            upload=None,
+        )
+
     def test_get(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
             pypco_wrapper_instance.get(

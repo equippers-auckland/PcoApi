@@ -15,7 +15,7 @@ class PcoBaseModel(PydanticBaseModel):
     pass
 
 
-class PcoBaseDataModel(PydanticBaseModel):
+class PcoBaseDataModel(PcoBaseModel):
     type: str
     id: str
 
