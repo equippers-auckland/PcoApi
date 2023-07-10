@@ -6,80 +6,243 @@
 
 from __future__ import annotations
 
-import json
-from typing import Any
+from typing import Union
+
+from pydantic import BaseModel as PydanticBaseModel
 
 
-class PcoModel(object):
-
-    def __init__(self, **kwargs) -> None:
-        self.param_defaults: dict[str, int | bool | str | None] = {}
-
-    @classmethod
-    def new_from_json_dict(cls, json_dict: dict[str, object], **kwargs) -> PcoModel:
-        json_data = json_dict.copy()
-        if kwargs:
-            for key, value in kwargs.items():
-                json_data[key] = value
-        if json_data["data"]["id"]:
-            json_data["id"] = json_data["data"]["id"]
-
-        if json_data["data"]["attributes"]:
-            for key, value in json_data["data"]["attributes"].items():
-                json_data[key] = value
-        c: cls = cls(**json_data)
-        c.__json = json_dict
-        return c
+class PcoBaseModel(PydanticBaseModel):
+    pass
 
 
-class PcoList(PcoModel):
-    def __init__(self, **kwargs):
-        self.param_defaults = {
-            "id": None,
-            "auto_refresh": None,
-            "automations_active": None,
-            "automations_count": None,
-            "batch_completed_at": None,
-            "created_at": None,
-            "description": None,
-            "has_inactive_results": None,
-            "include_inactive": None,
-            "invalid": None,
-            "name": None,
-            "name_or_description": None,
-            "paused_automations_count": None,
-            "recently_viewed": None,
-            "refreshed_at": None,
-            "return_original_if_none": None,
-            "returns": None,
-            "starred": None,
-            "status": None,
-            "subset": None,
-            "total_people": None,
-            "updated_at": None
-        }
-        self.id: str | None = None
-        self.auto_refresh: bool | None = None
-        self.automations_active: bool | None = None
-        self.automations_count: int | None = None
-        self.batch_completed_at: str | None = None
-        self.created_at: str | None = None
-        self.description: str | None = None
-        self.has_inactive_results: bool | None = None
-        self.include_inactive: bool | None = None
-        self.invalid: bool | None = None
-        self.name: str | None = None
-        self.name_or_description: str | None = None
-        self.paused_automations_count: int | None = None
-        self.recently_viewed: bool | None = None
-        self.refreshed_at: str | None = None
-        self.return_original_if_none: bool | None = None
-        self.returns: str | None = None
-        self.starred: bool | None = None
-        self.status: str | None = None
-        self.subset: str | None = None
-        self.total_people: int | None = None
-        self.updated_at: str | None = None
+class PcoBaseDataModel(PcoBaseModel):
+    type: str
+    id: str
 
-        for (param, default) in self.__dict__.items():
-            setattr(self, param, kwargs.get(param, default))
+
+class PcoBaseAttributesModel(PydanticBaseModel):
+    pass
+
+
+class PcoBaseRelationshipsModel(PydanticBaseModel):
+    pass
+
+
+class PcoBaseLinksModel(PydanticBaseModel):
+    self: str
+
+
+class PcoListAttributesModelModel(PcoBaseAttributesModel):
+    auto_refresh: bool
+    automations_active: bool
+    automations_count: int
+    batch_completed_at: Union[str, None]
+    created_at: str
+    description: str
+    has_inactive_results: bool
+    include_inactive: bool
+    invalid: bool
+    name: str
+    name_or_description: str
+    paused_automations_count: int
+    recently_viewed: bool
+    refreshed_at: Union[str, None]
+    return_original_if_none: bool
+    returns: str
+    starred: bool
+    status: str
+    subset: str
+    total_people: int
+    updated_at: str
+
+
+class PcoListModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoListAttributesModelModel
+    links: PcoBaseLinksModel
+
+
+class PcoPersonAttributesModel(PcoBaseAttributesModel):
+    accounting_administrator: bool
+    anniversary: Union[bool, None]
+    avatar: str
+    birthdate: str
+    can_create_forms: bool
+    can_email_lists: bool
+    child: bool
+    created_at: str
+    demographic_avatar_url: str
+    directory_status: str
+    first_name: str
+    gender: str
+    given_name: Union[str, None]
+    grade: Union[str, None]
+    graduation_year: Union[str, None]
+    inactivated_at: Union[str, None]
+    last_name: str
+    medical_notes: Union[str, None]
+    membership: str
+    middle_name: Union[str, None]
+    name: str
+    nickname: Union[str, None]
+    passed_background_check: bool
+    people_permissions: Union[str, None]
+    remote_id: Union[str, None]
+    school_type: Union[str, None]
+    site_administrator: bool
+    status: str
+    updated_at: str
+
+
+class PcoPrimaryCampusModel(PcoBaseModel):
+    data: PcoBaseDataModel
+
+
+class PcoGenderModel(PcoBaseModel):
+    data: PcoBaseDataModel
+
+
+class PcoPersonRelationshipsModel(PcoBaseRelationshipsModel):
+    primary_campus: PcoPrimaryCampusModel
+    gender: PcoGenderModel
+
+
+class PcoPersonLinksModel(PcoBaseLinksModel):
+    self: str
+    html: str
+
+
+class PcoPersonModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoPersonAttributesModel
+    relationships: PcoPersonRelationshipsModel
+    links: PcoPersonLinksModel
+
+
+class PcoEventsAttributesModel(PcoBaseAttributesModel):
+    archived_at: Union[str, None]
+    created_at: str
+    enable_services_integration: bool
+    frequency: str
+    integration_key: Union[str, None]
+    location_times_enabled: bool
+    name: str
+    pre_select_enabled: bool
+    updated_at: str
+
+
+class PcoEventsLinksModel(PcoBaseLinksModel):
+    self: str
+    html: str
+    attendance_types: str
+    check_ins: str
+    current_event_times: str
+    event_labels: str
+    event_periods: str
+    locations: str
+    person_events: str
+
+
+class PcoEventsModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoEventsAttributesModel
+    links: PcoEventsLinksModel
+
+
+class PcoEventDataLinkModel(PcoBaseModel):
+    data: PcoBaseDataModel
+
+
+class PcoEventPeriodsDataLinkModel(PcoBaseModel):
+    data: PcoBaseDataModel
+
+
+class PcoEventPeriodsAttributesModel(PcoBaseAttributesModel):
+    created_at: str
+    ends_at: str
+    guest_count: int
+    notes: Union[str, None]
+    regular_count: int
+    starts_at: str
+    updated_at: str
+    volunteer_count: int
+
+
+class PcoEventPeriodsRelationshipsModel(PcoBaseRelationshipsModel):
+    event: PcoEventDataLinkModel
+
+
+class PcoEventPeriodsLinksModel(PcoBaseLinksModel):
+    self: str
+
+
+class PcoEventPeriodsModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoEventPeriodsAttributesModel
+    relationships: PcoEventPeriodsRelationshipsModel
+    links: PcoEventPeriodsLinksModel
+
+
+class PcoEventPeriodRelationshipsModel(PcoBaseRelationshipsModel):
+    event: PcoEventDataLinkModel
+
+
+class PcoEventTimesAttributesModel(PcoBaseAttributesModel):
+    created_at: str
+    day_of_week: int
+    guest_count: int
+    hides_at: str
+    hour: int
+    minute: int
+    name: Union[str, None]
+    regular_count: int
+    shows_at: str
+    starts_at: str
+    total_count: int
+    updated_at: str
+    volunteer_count: int
+
+
+class PcoEventTimesRelationshipsModel(PcoBaseRelationshipsModel):
+    event: PcoEventDataLinkModel
+    event_period: PcoEventPeriodsDataLinkModel
+
+
+class PcoEventTimesLinksModel(PcoBaseLinksModel):
+    self: str
+
+
+class PcoEventTimesModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoEventTimesAttributesModel
+    relationships: PcoEventTimesRelationshipsModel
+    links: PcoEventTimesLinksModel
+
+
+class PcoAttendanceTypeAttributesModel(PcoBaseAttributesModel):
+    color: str
+    created_at: str
+    limit: Union[int, None]
+    name: str
+    updated_at: str
+
+
+class PcoAttendanceTypeRelationshipsModel(PcoBaseRelationshipsModel):
+    event: PcoEventDataLinkModel
+
+
+class PcoAttendanceTypeLinksModel(PcoBaseLinksModel):
+    self: str
+
+
+class PcoAttendanceTypesModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoAttendanceTypeAttributesModel
+    relationships: PcoAttendanceTypeRelationshipsModel
+    links: PcoAttendanceTypeLinksModel

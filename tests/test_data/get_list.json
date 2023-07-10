@@ -1,44 +1,44 @@
 {
   "data": {
     "type": "List",
-    "id": "1539020",
+    "id": "1234",
     "attributes": {
       "auto_refresh": true,
       "automations_active": false,
       "automations_count": 0,
-      "batch_completed_at": "2023-07-03T13:40:12Z",
-      "created_at": "2020-11-25T09:50:34Z",
-      "description": "Campus is 'Equippers Hutt City' AND Community is '1 Massive'",
-      "has_inactive_results": true,
+      "batch_completed_at": "2022-05-20T13:32:11Z",
+      "created_at": "2019-04-23T01:17:51Z",
+      "description": "Tag is 'Member'",
+      "has_inactive_results": false,
       "include_inactive": false,
-      "invalid": false,
-      "name": "(1) Massive Total",
-      "name_or_description": "(1) Massive Total",
+      "invalid": true,
+      "name": "Production Ops Team",
+      "name_or_description": "Production Ops Team",
       "paused_automations_count": 0,
       "recently_viewed": false,
-      "refreshed_at": "2023-07-03T13:40:12Z",
+      "refreshed_at": "2022-05-20T13:32:11Z",
       "return_original_if_none": true,
       "returns": "exact",
       "starred": false,
-      "status": "complete",
+      "status": "invalid",
       "subset": "all",
-      "total_people": 11,
-      "updated_at": "2023-07-03T13:40:12Z"
+      "total_people": 0,
+      "updated_at": "2022-05-20T13:32:11Z"
     },
     "links": {
-      "campus": "https://api.planningcenteronline.com/people/v2/campuses/44621",
-      "category": "https://api.planningcenteronline.com/people/v2/list_categories/55215",
-      "created_by": "https://api.planningcenteronline.com/people/v2/people/73616503",
-      "list_results": "https://api.planningcenteronline.com/people/v2/lists/1539020/list_results",
-      "mailchimp_sync": "https://api.planningcenteronline.com/people/v2/lists/1539020/mailchimp_sync",
-      "mailchimp_sync_status": null,
-      "people": "https://api.planningcenteronline.com/people/v2/lists/1539020/people",
-      "rules": "https://api.planningcenteronline.com/people/v2/lists/1539020/rules",
-      "run": "https://api.planningcenteronline.com/people/v2/lists/1539020/run",
-      "shares": "https://api.planningcenteronline.com/people/v2/lists/1539020/shares",
-      "star": "https://api.planningcenteronline.com/people/v2/lists/1539020/star",
-      "updated_by": "https://api.planningcenteronline.com/people/v2/people/73616503",
-      "self": "https://api.planningcenteronline.com/people/v2/lists/1539020"
+      "campus": null,
+      "category": null,
+      "created_by": "https://api.planningcenteronline.com/people/v2/people/1234",
+      "list_results": "https://api.planningcenteronline.com/people/v2/lists/1234/list_results",
+      "mailchimp_sync": "https://api.planningcenteronline.com/people/v2/lists/1234/mailchimp_sync",
+      "mailchimp_sync_status": "https://api.planningcenteronline.com/people/v2/lists/1234/mailchimp_sync_status",
+      "people": "https://api.planningcenteronline.com/people/v2/lists/1234/people",
+      "rules": "https://api.planningcenteronline.com/people/v2/lists/1234/rules",
+      "run": "https://api.planningcenteronline.com/people/v2/lists/1234/run",
+      "shares": "https://api.planningcenteronline.com/people/v2/lists/1234/shares",
+      "star": "https://api.planningcenteronline.com/people/v2/lists/1234/star",
+      "updated_by": "https://api.planningcenteronline.com/people/v2/people/1234",
+      "self": "https://api.planningcenteronline.com/people/v2/lists/1234"
     }
   },
   "included": [],
@@ -59,7 +59,7 @@
       "updated_by"
     ],
     "parent": {
-      "id": "57459",
+      "id": "248723",
       "type": "Organization"
     }
   }

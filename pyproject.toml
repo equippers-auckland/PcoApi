@@ -33,6 +33,7 @@ python = "^3.8, <3.12"
 rich = "*"
 typer = { version = "*", extras = ["all"] }
 pypco = { git = "https://github.com/billdeitrick/pypco.git", tag = "v1.2.0"}
+pydantic = "^2.0.1"
 
 [tool.poetry.group.nox.dependencies]
 nox-poetry = "*"
@@ -51,6 +52,7 @@ mypy = "*"
 # requirements.in (e.g. types-requests).
 # See: http://mypy-lang.blogspot.com/2021/06/mypy-0900-released.html
 #      https://github.com/python/typeshed/tree/main/stubs
+types-requests = "*"
 
 [tool.poetry.group.lint.dependencies]
 ruff = "*"
@@ -76,7 +78,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.mypy]
 ignore_missing_imports = true
 strict = true
-
+plugins = ["pydantic.mypy"]
 # If certain strict config options are too pedantic for a project,
 # disable them selectively here by setting to false.
 
@@ -94,7 +96,7 @@ extend-select = [
     "SIM", # flake8-simplify
     "TID", # flake8-tidy-imports
 ]
-extend-ignore = ["RUF005"]
+extend-ignore = ["RUF005", "UP007"]
 src = ["src"]
 
 [tool.ruff.isort]

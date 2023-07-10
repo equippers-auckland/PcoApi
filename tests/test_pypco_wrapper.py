@@ -29,7 +29,7 @@ def mock_pypco_pco() -> Generator[Mock, None, None]:
 def pypco_wrapper_instance() -> Generator[PyPcoWrapper, None, None]:
     with patch("pcoapi.pypco_wrapper.pypco.PCO", autospec=True) as mock_pypco_pco:
         pypcowrapper_instance = PyPcoWrapper(application_id="1234", secret="5678")
-        pypcowrapper_instance.api = mock_pypco_pco.return_value
+        pypcowrapper_instance.pco = mock_pypco_pco.return_value
     yield pypcowrapper_instance
 
 
@@ -55,14 +55,14 @@ class TestPyPcoWrapper:
     def test_request_response(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         # check if all args are passed on to the pypco.PCO.request method
         assert (
-                pypco_wrapper_instance.request_response(
-                    method="GET",
-                    url="/services/v2/event_times",
-                    payload=None,
-                    upload=None,
-                    params=None,
-                )
-                == pypco_wrapper_instance.pco.request_response.return_value
+            pypco_wrapper_instance.request_response(
+                method="GET",
+                url="/services/v2/event_times",
+                payload=None,
+                upload=None,
+                params=None,
+            )
+            == pypco_wrapper_instance.pco.request_response.return_value
         )
         pypco_wrapper_instance.pco.request_response(
             method="GET",
@@ -72,13 +72,30 @@ class TestPyPcoWrapper:
             params=None,
         )
 
+    def test_request_json(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
+        assert (
+            pypco_wrapper_instance.request_json(
+                method="GET",
+                url="/services/v2/event_times",
+                payload=None,
+                upload=None,
+            )
+            == pypco_wrapper_instance.pco.request_json.return_value
+        )
+        pypco_wrapper_instance.pco.request_json.assert_called_once_with(
+            method="GET",
+            url="/services/v2/event_times",
+            payload=None,
+            upload=None,
+        )
+
     def test_get(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
-                pypco_wrapper_instance.get(
-                    url="/services/v2/event_times",
-                    params="Test",
-                )
-                == pypco_wrapper_instance.pco.get.return_value
+            pypco_wrapper_instance.get(
+                url="/services/v2/event_times",
+                params="Test",
+            )
+            == pypco_wrapper_instance.pco.get.return_value
         )
         pypco_wrapper_instance.pco.get.assert_called_once_with(
             url="/services/v2/event_times", params="Test"
@@ -86,37 +103,37 @@ class TestPyPcoWrapper:
 
     def test_post(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
-                pypco_wrapper_instance.post(
-                    url="/services/v2/event_times",
-                    payload={"Test": "Test"},
-                    params="Test",
-                )
-                == pypco_wrapper_instance.pco.post.return_value
+            pypco_wrapper_instance.post(
+                url="/services/v2/event_times",
+                payload={"Test": "Test"},
+                params="Test",
+            )
+            == pypco_wrapper_instance.pco.post.return_value
         )
         pypco_wrapper_instance.pco.post.assert_called_once_with(
-            url="/services/v2/event_times", payload="Test", params="Test"
+            url="/services/v2/event_times", payload={"Test": "Test"}, params="Test"
         )
 
     def test_patch(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
-                pypco_wrapper_instance.patch(
-                    url="/services/v2/event_times",
-                    payload={"Test": "Test"},
-                    params="Test",
-                )
-                == pypco_wrapper_instance.pco.patch.return_value
+            pypco_wrapper_instance.patch(
+                url="/services/v2/event_times",
+                payload={"Test": "Test"},
+                params="Test",
+            )
+            == pypco_wrapper_instance.pco.patch.return_value
         )
         pypco_wrapper_instance.pco.patch.assert_called_once_with(
-            url="/services/v2/event_times", payload="Test", params="Test"
+            url="/services/v2/event_times", payload={"Test": "Test"}, params="Test"
         )
 
     def test_delete(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
-                pypco_wrapper_instance.delete(
-                    url="/services/v2/event_times",
-                    params="Test",
-                )
-                == pypco_wrapper_instance.pco.delete.return_value
+            pypco_wrapper_instance.delete(
+                url="/services/v2/event_times",
+                params="Test",
+            )
+            == pypco_wrapper_instance.pco.delete.return_value
         )
         pypco_wrapper_instance.pco.delete.assert_called_once_with(
             url="/services/v2/event_times", params="Test"
@@ -124,13 +141,13 @@ class TestPyPcoWrapper:
 
     def test_iterate(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
-                pypco_wrapper_instance.iterate(
-                    url="/services/v2/event_times",
-                    offset=1,
-                    per_page=26,
-                    params="Test",
-                )
-                == pypco_wrapper_instance.pco.iterate.return_value
+            pypco_wrapper_instance.iterate(
+                url="/services/v2/event_times",
+                offset=1,
+                per_page=26,
+                params="Test",
+            )
+            == pypco_wrapper_instance.pco.iterate.return_value
         )
         pypco_wrapper_instance.pco.iterate.assert_called_once_with(
             url="/services/v2/event_times", offset=1, per_page=26, params="Test"
@@ -138,18 +155,18 @@ class TestPyPcoWrapper:
 
     def test_upload(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
-                pypco_wrapper_instance.upload(
-                    file_path="Test",
-                    params="Test",
-                )
-                == pypco_wrapper_instance.pco.upload.return_value
+            pypco_wrapper_instance.upload(
+                file_path="Test",
+                params="Test",
+            )
+            == pypco_wrapper_instance.pco.upload.return_value
         )
         pypco_wrapper_instance.pco.upload.assert_called_once_with(file_path="Test", params="Test")
 
     def test_template(self, pypco_wrapper_instance: PyPcoWrapper) -> None:
         assert (
-                pypco_wrapper_instance.template(object_type="Test", attributes={"a": "b"})
-                == pypco_wrapper_instance.pco.template.return_value
+            pypco_wrapper_instance.template(object_type="Test", attributes={"a": "b"})
+            == pypco_wrapper_instance.pco.template.return_value
         )
         pypco_wrapper_instance.pco.template.assert_called_once_with(
             object_type="Test", attributes={"a": "b"}
