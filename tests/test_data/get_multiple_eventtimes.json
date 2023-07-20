@@ -1,0 +1,933 @@
+{
+    "links": {
+        "self": "https://api.planningcenteronline.com/check-ins/v2/event_times?order=-starts_at",
+        "next": "https://api.planningcenteronline.com/check-ins/v2/event_times?offset=25&order=-starts_at"
+    },
+    "data": [
+        {
+            "type": "EventTime",
+            "id": "6705575",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:23Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T11:00:00Z",
+                "hour": 21,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T18:30:00Z",
+                "starts_at": "2023-07-16T09:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:23Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "954871"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "8647171"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/6705575"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "9928841",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:19Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T04:30:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:19Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "5302211"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "3280065"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/9928841"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "4156544",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:20Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:20Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "5047370"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "8552997"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/4156544"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "2672990",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:20Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:20Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "7120181"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "3893785"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/2672990"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "8248012",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:20Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:20Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "7956611"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "4780869"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/8248012"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "4919162",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:23Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T09:30:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": "5pm Sign In",
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:23Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "2731907"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "4735550"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/4919162"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "8279915",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:23Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:23Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1988845"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "8195449"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/8279915"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "4149986",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:25Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:25Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "7922500"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "1677732"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/4149986"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "2630810",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:25Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:30:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T02:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:25Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "2676480"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "3726115"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/2630810"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "6696446",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:26Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:26Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "65203"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "2477120"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/6696446"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "794040",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:26Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:26Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "3613404"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "2839669"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/794040"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "698803",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:26Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": "PM",
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:26Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "5033646"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "229106"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/698803"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "5151373",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:28Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T03:00:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:28Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "9314959"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "5783472"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/5151373"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "6012976",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:28Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:30:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T02:30:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:28Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "2078045"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "5642011"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/6012976"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "8355790",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:29Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T07:00:00Z",
+                "hour": 17,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T04:30:00Z",
+                "starts_at": "2023-07-16T05:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:29Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "396159"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "8643370"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/8355790"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "6386395",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:29Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T05:00:00Z",
+                "hour": 15,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-16T01:00:00Z",
+                "starts_at": "2023-07-16T03:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:29Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "8325461"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "5317853"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/6386395"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "5941031",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:21Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T03:30:00Z",
+                "hour": 12,
+                "minute": 30,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T21:00:00Z",
+                "starts_at": "2023-07-16T00:30:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:21Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "4744241"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "7215025"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/5941031"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "5549494",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:23Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T02:30:00Z",
+                "hour": 12,
+                "minute": 30,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T22:30:00Z",
+                "starts_at": "2023-07-16T00:30:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:23Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1256941"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "2798892"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/5549494"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "5155729",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:25Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T02:30:00Z",
+                "hour": 12,
+                "minute": 30,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T22:30:00Z",
+                "starts_at": "2023-07-16T00:30:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:25Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "214702"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "9753943"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/5155729"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "9309062",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:28Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T01:30:00Z",
+                "hour": 11,
+                "minute": 30,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T21:30:00Z",
+                "starts_at": "2023-07-15T23:30:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:28Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "6956165"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "7967524"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/9309062"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "9670155",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:27Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T04:00:00Z",
+                "hour": 10,
+                "minute": 30,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T20:30:00Z",
+                "starts_at": "2023-07-15T22:30:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:27Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "3202137"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "4447076"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/9670155"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "4313013",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:27Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T01:30:00Z",
+                "hour": 10,
+                "minute": 30,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T19:00:00Z",
+                "starts_at": "2023-07-15T22:30:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:27Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "959255"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "853801"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/4313013"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "9323420",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:19Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T00:00:00Z",
+                "hour": 10,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T20:00:00Z",
+                "starts_at": "2023-07-15T22:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:19Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "9140955"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "8930017"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/9323420"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "8879137",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:19Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T01:00:00Z",
+                "hour": 10,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T20:00:00Z",
+                "starts_at": "2023-07-15T22:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:19Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "3268256"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "6999206"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/8879137"
+            }
+        },
+        {
+            "type": "EventTime",
+            "id": "2872004",
+            "attributes": {
+                "created_at": "2023-07-09T12:19:19Z",
+                "day_of_week": 0,
+                "guest_count": 0,
+                "hides_at": "2023-07-16T11:30:00Z",
+                "hour": 10,
+                "minute": 0,
+                "name": null,
+                "regular_count": 0,
+                "shows_at": "2023-07-15T19:00:00Z",
+                "starts_at": "2023-07-15T22:00:00Z",
+                "total_count": 0,
+                "updated_at": "2023-07-09T12:19:19Z",
+                "volunteer_count": 0
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "6610031"
+                    }
+                },
+                "event_period": {
+                    "data": {
+                        "type": "EventPeriod",
+                        "id": "374105"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/2872004"
+            }
+        }
+    ],
+    "included": [],
+    "meta": {
+        "total_count": 16038,
+        "count": 25,
+        "next": {
+            "offset": 25
+        },
+        "can_order_by": [
+            "starts_at",
+            "shows_at"
+        ],
+        "can_query_by": [
+            "created_at",
+            "updated_at"
+        ],
+        "can_include": [
+            "event",
+            "event_period",
+            "headcounts"
+        ],
+        "parent": {
+            "id": "57459",
+            "type": "Organization"
+        }
+    }
+}

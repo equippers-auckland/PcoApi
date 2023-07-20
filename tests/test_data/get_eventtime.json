@@ -1,0 +1,56 @@
+{
+    "data": {
+        "type": "EventTime",
+        "id": "1234",
+        "attributes": {
+            "created_at": "2023-07-09T12:19:26Z",
+            "day_of_week": 0,
+            "guest_count": 0,
+            "hides_at": "2023-07-16T07:00:00Z",
+            "hour": 17,
+            "minute": 0,
+            "name": "My EventTime",
+            "regular_count": 0,
+            "shows_at": "2023-07-16T03:00:00Z",
+            "starts_at": "2023-07-16T05:00:00Z",
+            "total_count": 0,
+            "updated_at": "2023-07-09T12:19:26Z",
+            "volunteer_count": 0
+        },
+        "relationships": {
+            "event": {
+                "data": {
+                    "type": "Event",
+                    "id": "1234"
+                }
+            },
+            "event_period": {
+                "data": {
+                    "type": "EventPeriod",
+                    "id": "1234"
+                }
+            }
+        },
+        "links": {
+            "available_locations": "https://api.planningcenteronline.com/check-ins/v2/event_times/1234/available_locations",
+            "check_ins": "https://api.planningcenteronline.com/check-ins/v2/event_times/1234/check_ins",
+            "event": "https://api.planningcenteronline.com/check-ins/v2/events/1234",
+            "event_period": "https://api.planningcenteronline.com/check-ins/v2/event_times/1234/event_period",
+            "headcounts": "https://api.planningcenteronline.com/check-ins/v2/event_times/1234/headcounts",
+            "location_event_times": "https://api.planningcenteronline.com/check-ins/v2/event_times/1234/location_event_times",
+            "self": "https://api.planningcenteronline.com/check-ins/v2/event_times/1234"
+        }
+    },
+    "included": [],
+    "meta": {
+        "can_include": [
+            "event",
+            "event_period",
+            "headcounts"
+        ],
+        "parent": {
+            "id": "1234",
+            "type": "Organization"
+        }
+    }
+}
