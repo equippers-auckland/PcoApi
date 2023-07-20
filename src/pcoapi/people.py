@@ -7,7 +7,7 @@
 from __future__ import annotations
 
 from pcoapi.helpers import convert_response_data_to_list_of_model, convert_response_data_to_model
-from pcoapi.models import PcoListModel, PcoPersonModel
+from pcoapi.models.people_models import PcoListModel, PcoPersonModel
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
 

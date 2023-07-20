@@ -6,9 +6,9 @@
 from __future__ import annotations
 
 import sys
-from typing import Dict, List, TypedDict, TypeVar, Union
+from typing import Callable, Dict, List, TypedDict, TypeVar, Union
 
-from pcoapi.models import PcoBaseModel
+from pcoapi.models.base_models import PcoBaseModel
 
 if sys.version_info >= (3, 10):
     # noinspection PyCompatibility
@@ -24,6 +24,9 @@ JsonArrayType = List[JsonValueType]
 """List that can be returned by the standard JSON deserializing process."""
 JsonObjectType = Dict[str, JsonValueType]
 """Dictionary that can be returned by the standard JSON deserializing process."""
+
+GeneratorJsonType = Callable[[str], JsonObjectType]
+"""Callable that returns a JSON object from a file path."""
 
 
 class PcoDataType(TypedDict):

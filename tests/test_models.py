@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import Callable
 
 from pcoapi.helpers import JsonObjectType
-from pcoapi.models import PcoListModel, PcoPersonModel
+from pcoapi.models.people_models import PcoListModel, PcoPersonModel
 
 
 def test_list_model(load_test_data: Callable[[str], JsonObjectType]) -> None:

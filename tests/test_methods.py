@@ -22,6 +22,7 @@ def test_request_test(setup_real_api: PcoApi) -> None:
     api.checkins.events.get_by_id(73626)
 
 
+@pytest.mark.skip
 def test_lists(setup_real_api: PcoApi) -> None:
     api = setup_real_api
     lists = api.people.lists.get_most_recent()

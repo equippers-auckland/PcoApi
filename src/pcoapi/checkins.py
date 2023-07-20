@@ -7,7 +7,12 @@
 from __future__ import annotations
 
 from pcoapi.helpers import convert_response_data_to_list_of_model, convert_response_data_to_model
-from pcoapi.models import PcoAttendanceTypesModel, PcoEventsModel, PcoEventTimesModel
+from pcoapi.models.checkins_models import (
+    PcoAttendanceTypesModel,
+    PcoEventsModel,
+    PcoEventTimesHeadcountModel,
+    PcoEventTimesModel,
+)
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
 
@@ -33,6 +38,13 @@ class EventTimes:
     def get_by_id(self, event_time_id: int) -> PcoEventTimesModel:
         response = self.api.get(f"/check-ins/v2/event_times/{event_time_id}")
         filled_data_model = convert_response_data_to_model(response, PcoEventTimesModel)
+        return filled_data_model
+
+    def get_headcounts_by_id(self, event_time_id: int) -> list[PcoEventTimesHeadcountModel]:
+        response = self.api.get(f"/check-ins/v2/event_times/{event_time_id}/headcounts")
+        filled_data_model = convert_response_data_to_list_of_model(
+            response, PcoEventTimesHeadcountModel
+        )
         return filled_data_model
 
 
