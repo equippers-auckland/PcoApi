@@ -44,9 +44,9 @@ class PcoListModel(PcoBaseModel):
 
 class PcoPersonAttributesModel(PcoBaseAttributesModel):
     accounting_administrator: bool
-    anniversary: Union[bool, None]
+    anniversary: Union[str, None]
     avatar: str
-    birthdate: str
+    birthdate: Union[str, None]
     can_create_forms: bool
     can_email_lists: bool
     child: bool
@@ -54,14 +54,14 @@ class PcoPersonAttributesModel(PcoBaseAttributesModel):
     demographic_avatar_url: str
     directory_status: str
     first_name: str
-    gender: str
+    gender: Union[str, None]
     given_name: Union[str, None]
-    grade: Union[str, None]
-    graduation_year: Union[str, None]
+    grade: Union[int, None]
+    graduation_year: Union[int, None]
     inactivated_at: Union[str, None]
     last_name: str
     medical_notes: Union[str, None]
-    membership: str
+    membership: Union[str, None]
     middle_name: Union[str, None]
     name: str
     nickname: Union[str, None]
@@ -75,11 +75,11 @@ class PcoPersonAttributesModel(PcoBaseAttributesModel):
 
 
 class PcoPrimaryCampusModel(PcoBaseModel):
-    data: PcoBaseDataModel
+    data: Union[PcoBaseDataModel, None]
 
 
 class PcoGenderModel(PcoBaseModel):
-    data: PcoBaseDataModel
+    data: Union[PcoBaseDataModel, None]
 
 
 class PcoPersonRelationshipsModel(PcoBaseRelationshipsModel):

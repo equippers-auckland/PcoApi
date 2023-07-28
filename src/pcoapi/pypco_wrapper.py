@@ -12,6 +12,25 @@ from pcoapi.helpers import PcoResponseType
 
 
 # noinspection Mypy
+class OverloadedPco(pypco.PCO):  # type: ignore
+    def __init__(self, *args, **kwargs) -> None:  # type: ignore
+        super().__init__(*args, **kwargs)
+
+    def get(self, url: str, **params) -> PcoResponseType:  # type: ignore
+        request_size_param = "per_page"
+        request_size = 100
+        request_size_str = f"{request_size_param}={request_size}"
+        if request_size_param not in url:
+            url = f"{url}?{request_size_str}"
+        response: PcoResponseType = super().get(url, **params)
+        if "next" in response["links"]:
+            next_url = response["links"]["next"]
+            next_response = self.get(next_url, **params)
+            response["data"] = response["data"].__add__(next_response["data"])  # type: ignore
+        return response
+
+
+# noinspection Mypy
 class PyPcoWrapper:
     """
     Wrapper Class for the pypco library
@@ -28,7 +47,7 @@ class PyPcoWrapper:
         upload_url: str = "https://upload.planningcenteronline.com/v2/files"
         upload_timeout: int = 300
         timeout_retries: int = 3
-        self.pco = pypco.PCO(
+        self.pco = OverloadedPco(
             application_id=application_id,
             secret=secret,
             token=token,
@@ -136,8 +155,7 @@ class PyPcoWrapper:
         Returns:
             dict: The payload returned by the API for this request.
         """
-
-        return self.pco.get(url=url, **params)  # type: ignore
+        return self.pco.get(url=url, **params)
 
     def post(
         self,

@@ -46,3 +46,11 @@ class Lists:
         response = self.api.get(f"/people/v2/lists/{list_id}/people")
         data_model = convert_response_data_to_list_of_model(response, PcoPersonModel)
         return data_model
+
+    def get_by_name(self, name: str) -> list[PcoListModel]:
+        """
+        Requests a list from the PCO API by name
+        """
+        response = self.api.get(f"/people/v2/lists?where[name]={name}")
+        data_model = convert_response_data_to_list_of_model(response, PcoListModel)
+        return data_model

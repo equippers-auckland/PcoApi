@@ -6,7 +6,7 @@
       "accounting_administrator": false,
       "anniversary": null,
       "avatar": "https://avatars.planningcenteronline.com/uploads/person/123213-123212/avatar.4.png",
-      "birthdate": "1985-07-04",
+      "birthdate": null,
       "can_create_forms": false,
       "can_email_lists": false,
       "child": false,
@@ -21,7 +21,7 @@
       "inactivated_at": null,
       "last_name": "Miller",
       "medical_notes": null,
-      "membership": "5 Leader (Team)",
+      "membership": null,
       "middle_name": null,
       "name": "Hans Miller",
       "nickname": null,
@@ -41,10 +41,7 @@
         }
       },
       "gender": {
-        "data": {
-          "type": "Gender",
-          "id": "101112113"
-        }
+        "data": null
       }
     },
     "links": {
