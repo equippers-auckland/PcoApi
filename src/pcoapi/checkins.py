@@ -9,6 +9,7 @@ from __future__ import annotations
 from pcoapi.helpers import convert_response_data_to_list_of_model, convert_response_data_to_model
 from pcoapi.models.checkins_models import (
     PcoAttendanceTypesModel,
+    PcoEventPeriodsModel,
     PcoEventsModel,
     PcoEventTimesHeadcountModel,
     PcoEventTimesModel,
@@ -62,4 +63,10 @@ class Events:
         filled_data_model = convert_response_data_to_list_of_model(
             response, PcoAttendanceTypesModel
         )
+        return filled_data_model
+
+    def get_most_recent_event_periods(self, event_id: int) -> list[PcoEventPeriodsModel]:
+        params = {"order": "-starts_at", "per_page": 25}
+        response = self.api.limited_get(f"/check-ins/v2/events/{event_id}/event_periods", **params)
+        filled_data_model = convert_response_data_to_list_of_model(response, PcoEventPeriodsModel)
         return filled_data_model

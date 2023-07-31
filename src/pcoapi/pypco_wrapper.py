@@ -17,16 +17,19 @@ class OverloadedPco(pypco.PCO):  # type: ignore
         super().__init__(*args, **kwargs)
 
     def get(self, url: str, **params) -> PcoResponseType:  # type: ignore
-        request_size_param = "per_page"
-        request_size = 100
-        request_size_str = f"{request_size_param}={request_size}"
-        if request_size_param not in url:
-            url = f"{url}?{request_size_str}"
+        if params is None:
+            params = {}
+        if "per_page" not in params:
+            params["per_page"] = 100
         response: PcoResponseType = super().get(url, **params)
         if "next" in response["links"]:
             next_url = response["links"]["next"]
             next_response = self.get(next_url, **params)
             response["data"] = response["data"].__add__(next_response["data"])  # type: ignore
+        return response
+
+    def limited_get(self, url: str, **params) -> PcoResponseType:
+        response: PcoResponseType = super().get(url, **params)
         return response
 
 
@@ -156,6 +159,9 @@ class PyPcoWrapper:
             dict: The payload returned by the API for this request.
         """
         return self.pco.get(url=url, **params)
+
+    def limited_get(self, url: str, **params) -> PcoResponseType:
+        return self.pco.limited_get(url=url, **params)
 
     def post(
         self,
