@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pcoapi"
-version = "0.0.2"
+version = "1.0.0"
 description = "Example Python project using best practices"
 authors = ["John Hagen <johnthagen@gmail.com>"]
 license = "MIT"
