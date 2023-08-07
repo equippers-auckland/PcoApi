@@ -4,7 +4,8 @@ This implements all required endpoints for the PCO API
 from __future__ import annotations
 
 from pcoapi.checkins import CheckIns
-from pcoapi.people import People
+from pcoapi.groups import TopLevelGroups
+from pcoapi.people import TopLevelPeople
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
 
@@ -20,5 +21,6 @@ class PcoApi:
         token: str | None = None,  # pylint: disable=unsubscriptable-object
     ):
         self.api = PyPcoWrapper(application_id=application_id, secret=secret, token=token)
-        self.people = People(self.api)
+        self.people = TopLevelPeople(self.api)
         self.checkins = CheckIns(self.api)
+        self.groups = TopLevelGroups(self.api)

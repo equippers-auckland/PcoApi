@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, Union
 
 from pcoapi.models.base_models import (
     PcoBaseAttributesModel,
+    PcoBaseDataModel,
     PcoBaseLinksModel,
     PcoBaseModel,
     PcoBaseRelationshipsModel,
@@ -14,18 +15,18 @@ class PcoGroupsEventAttributesModel(PcoBaseAttributesModel):
     attendance_requests_enabled: bool
     automated_reminder_enabled: bool
     canceled: bool
-    canceled_at: Optional[str]
-    description: Optional[str]
-    ends_at: Optional[str]
-    location_type_preference: Optional[str]
+    canceled_at: Union[str, None]
+    description: Union[str, None]
+    ends_at: Union[str, None]
+    location_type_preference: Union[str, None]
     multi_day: bool
     name: str
     reminders_sent: bool
-    reminders_sent_at: Optional[str]
+    reminders_sent_at: Union[str, None]
     repeating: bool
-    starts_at: Optional[str]
-    virtual_location_url: Optional[str]
-    visitors_count: int
+    starts_at: Union[str, None]
+    virtual_location_url: Union[str, None]
+    visitors_count: Union[int, None]
 
 
 class PcoGroupsEventRelationshipsModel(PcoBaseRelationshipsModel):
@@ -36,11 +37,11 @@ class PcoGroupsEventRelationshipsModel(PcoBaseRelationshipsModel):
 
 
 class PcoGroupsEventLinksModel(PcoBaseLinksModel):
-    attendance_recording: Optional[str]
-    attendances: str
-    group: str
-    location: str
-    notes: str
+    attendance_recording: Union[str, None] = None
+    attendances: Union[str, None] = None
+    group: Union[str, None] = None
+    location: Union[str, None] = None
+    notes: Union[str, None] = None
     self: str
 
 
@@ -52,18 +53,37 @@ class PcoGroupsEventModel(PcoBaseModel):
     links: PcoGroupsEventLinksModel
 
 
+class PcoGroupsEventAttendanceTotalsModel(PcoBaseModel):
+    member: int
+    leader: int
+    visitor: int
+    applicant: int
+
+
+class PcoGroupsEventAttendanceRecordingAttrModel(PcoBaseAttributesModel):
+    committed_at: Union[str, None]
+    state: str
+    attendance_totals: PcoGroupsEventAttendanceTotalsModel
+
+
+class PcoGroupsEventAttendanceRecordingModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoGroupsEventAttendanceRecordingAttrModel
+
+
 class PcoGroupsAttributesModel(PcoBaseAttributesModel):
-    archived_at: Optional[str]
-    contact_email: Optional[str]
+    archived_at: Union[str, None]
+    contact_email: Union[str, None]
     created_at: str
-    description: Optional[str]
+    description: Union[str, None]
     events_visibility: str
-    location_type_preference: Optional[str]
+    location_type_preference: Union[str, None]
     name: str
-    membership_count: int
-    public_church_center_web_url: Optional[str]
-    schedule: str
-    virtual_location_url: Optional[str]
+    memberships_count: int
+    public_church_center_web_url: Union[str, None]
+    schedule: Union[str, None]
+    virtual_location_url: Union[str, None]
 
 
 class PcoGroupsRelationshipsModel(PcoBaseRelationshipsModel):
@@ -72,16 +92,28 @@ class PcoGroupsRelationshipsModel(PcoBaseRelationshipsModel):
 
 
 class PcoGroupsLinksModel(PcoBaseLinksModel):
-    enrollment: str
-    events: str
-    group_type: str
-    location: str
-    memberships: str
-    people: str
-    resources: str
-    tags: str
     self: str
-    html: str
+    enrollment: Union[str, None] = None
+    events: Union[str, None] = None
+    group_type: Union[str, None] = None
+    location: Union[str, None] = None
+    memberships: Union[str, None] = None
+    people: Union[str, None] = None
+    resources: Union[str, None] = None
+    tags: Union[str, None] = None
+    html: Union[str, None] = None
+
+
+class PcoGroupsMembershipAttributesModel(PcoBaseAttributesModel):
+    joined_at: str
+    role: str
+
+
+class PcoGroupsMembershipModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoGroupsMembershipAttributesModel
+    links: PcoBaseLinksModel
 
 
 class PcoGroupsModel(PcoBaseModel):
@@ -96,7 +128,7 @@ class PcoGroupTypesAttributesModel(PcoBaseAttributesModel):
     church_center_map_visible: bool
     church_center_visible: bool
     color: str
-    description: Optional[str]
+    description: Union[str, None]
     name: str
     position: int
 
@@ -113,15 +145,23 @@ class PcoGroupTypesModel(PcoBaseModel):
 
 
 class PcoGroupTagsAttributesModel(PcoBaseAttributesModel):
-    display_publicly: bool
-    multiple_options_enabled: bool
+    display_publicly: Union[bool, None] = None
+    multiple_options_enabled: Union[bool, None] = None
     name: str
     position: int
 
 
-class PcoGroupTagsLinksModel:
-    tags: str
+class PcoGroupTagsLinksModel(PcoBaseModel):
+    tags: Optional[str] = None
     self: str
+
+
+class PcoGroupsTagsRelModel(PcoBaseRelationshipsModel):
+    tag_group: PcoGroupsTagGroupDataModel
+
+
+class PcoGroupsTagGroupDataModel(PcoBaseModel):
+    data: PcoBaseDataModel
 
 
 class PcoGroupTagsModel(PcoBaseModel):
@@ -129,3 +169,4 @@ class PcoGroupTagsModel(PcoBaseModel):
     id: str
     attributes: PcoGroupTagsAttributesModel
     links: PcoGroupTagsLinksModel
+    relationships: PcoGroupsTagsRelModel

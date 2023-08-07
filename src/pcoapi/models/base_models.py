@@ -20,5 +20,9 @@ class PcoBaseRelationshipsModel(PydanticBaseModel):
     pass
 
 
+class PcoBaseRelationshipsDataModel(PcoBaseModel):
+    data: PcoBaseDataModel
+
+
 class PcoBaseLinksModel(PydanticBaseModel):
     self: str

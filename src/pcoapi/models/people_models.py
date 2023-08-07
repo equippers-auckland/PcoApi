@@ -21,7 +21,7 @@ class PcoListAttributesModelModel(PcoBaseAttributesModel):
     has_inactive_results: bool
     include_inactive: bool
     invalid: bool
-    name: str
+    name: Union[str, None]
     name_or_description: str
     paused_automations_count: int
     recently_viewed: bool
@@ -98,3 +98,13 @@ class PcoPersonModel(PcoBaseModel):
     attributes: PcoPersonAttributesModel
     relationships: PcoPersonRelationshipsModel
     links: PcoPersonLinksModel
+
+
+class PcoPersonFieldDataModel(PcoBaseDataModel):
+    type: str
+    id: str
+    attributes: PcoPersonFieldDataAttrModel
+
+
+class PcoPersonFieldDataAttrModel(PcoBaseModel):
+    value: str

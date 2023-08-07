@@ -29,7 +29,7 @@ class TestEventTimes:
         api = setup_mocked_api
         with patch("pcoapi.pypco_wrapper.PyPcoWrapper.get") as mock_get:
             mock_get.return_value = fake_response
-            headcounts = api.checkins.event_times.get_headcounts_by_id(1234)
+            headcounts = api.checkins.event_times.get_headcounts_by_event_time_id(1234)
             assert headcounts[0].id == "6841882"
             assert headcounts[0].attributes.total == 3
 

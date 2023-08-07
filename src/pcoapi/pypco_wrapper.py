@@ -22,6 +22,8 @@ class OverloadedPco(pypco.PCO):  # type: ignore
         if "per_page" not in params:
             params["per_page"] = 100
         response: PcoResponseType = super().get(url, **params)
+        if "links" not in response:
+            return response
         if "next" in response["links"]:
             next_url = response["links"]["next"]
             next_response = self.get(next_url, **params)

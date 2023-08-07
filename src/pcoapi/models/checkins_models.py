@@ -7,6 +7,7 @@ from pcoapi.models.base_models import (
     PcoBaseDataModel,
     PcoBaseLinksModel,
     PcoBaseModel,
+    PcoBaseRelationshipsDataModel,
     PcoBaseRelationshipsModel,
 )
 
@@ -58,7 +59,7 @@ class PcoEventPeriodsAttributesModel(PcoBaseAttributesModel):
     created_at: str
     ends_at: str
     guest_count: int
-    notes: Union[str, None]
+    note: Union[str, None]
     regular_count: int
     starts_at: str
     updated_at: str
@@ -163,3 +164,32 @@ class PcoAttendanceTypesModel(PcoBaseModel):
     attributes: PcoAttendanceTypeAttributesModel
     relationships: PcoAttendanceTypeRelationshipsModel
     links: PcoAttendanceTypeLinksModel
+
+
+class PcoEventPeriodCheckInsModel(PcoBaseModel):
+    type: str
+    id: str
+    attributes: PcoEventPeriodCheckInsAttrModel
+    relationships: PcoEventPeriodCheckInsRelModel
+    links: PcoBaseLinksModel
+
+
+class PcoEventPeriodCheckInsAttrModel(PcoBaseAttributesModel):
+    checked_out_at: Union[str, None]
+    confirmed_at: Union[str, None]
+    created_at: str
+    emergency_contact_name: Union[str, None]
+    emergency_contact_phone_number: Union[str, None]
+    first_name: str
+    last_name: str
+    kind: str
+    medical_notes: Union[str, None]
+    number: Union[int, None]
+    one_time_guest: bool
+    security_code: Union[str, None]
+    updated_at: str
+
+
+class PcoEventPeriodCheckInsRelModel(PcoBaseRelationshipsModel):
+    event_period: PcoEventPeriodsDataLinkModel
+    person: PcoBaseRelationshipsDataModel
