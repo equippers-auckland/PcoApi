@@ -12,7 +12,7 @@ from pcoapi.helpers import (
     convert_response_data_to_list_of_model,
     convert_response_data_to_model,
 )
-from pcoapi.models import PcoBaseDataModel
+from pcoapi.models.base_models import PcoBaseDataModel
 
 json_data: PcoResponseType = {
     "data": {"type": "Person", "id": "123456789", "this": "that"}

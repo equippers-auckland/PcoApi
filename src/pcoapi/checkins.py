@@ -6,8 +6,19 @@
 
 from __future__ import annotations
 
-from pcoapi.helpers import convert_response_data_to_list_of_model, convert_response_data_to_model
-from pcoapi.models import PcoAttendanceTypesModel, PcoEventsModel, PcoEventTimesModel
+from pcoapi.helpers import (
+    PcoParamsType,
+    convert_response_data_to_list_of_model,
+    convert_response_data_to_model,
+)
+from pcoapi.models.checkins_models import (
+    PcoAttendanceTypesModel,
+    PcoEventPeriodCheckInsModel,
+    PcoEventPeriodsModel,
+    PcoEventsModel,
+    PcoEventTimesHeadcountModel,
+    PcoEventTimesModel,
+)
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
 
@@ -35,6 +46,15 @@ class EventTimes:
         filled_data_model = convert_response_data_to_model(response, PcoEventTimesModel)
         return filled_data_model
 
+    def get_headcounts_by_event_time_id(
+        self, event_time_id: int
+    ) -> list[PcoEventTimesHeadcountModel]:
+        response = self.api.get(f"/check-ins/v2/event_times/{event_time_id}/headcounts")
+        filled_data_model = convert_response_data_to_list_of_model(
+            response, PcoEventTimesHeadcountModel
+        )
+        return filled_data_model
+
 
 class Events:
     def __init__(self, pcoapi: PyPcoWrapper) -> None:
@@ -50,4 +70,30 @@ class Events:
         filled_data_model = convert_response_data_to_list_of_model(
             response, PcoAttendanceTypesModel
         )
+        return filled_data_model
+
+    def get_most_recent_event_periods(self, event_id: int) -> list[PcoEventPeriodsModel]:
+        params = {"order": "-starts_at", "per_page": "25"}
+        response = self.api.limited_get(f"/check-ins/v2/events/{event_id}/event_periods", **params)
+        filled_data_model = convert_response_data_to_list_of_model(response, PcoEventPeriodsModel)
+        return filled_data_model
+
+    def get_event_period_check_ins(
+        self, event_id: int, event_period_id: int, **params: PcoParamsType
+    ) -> list[PcoEventPeriodCheckInsModel]:
+        response = self.api.get(
+            f"/check-ins/v2/events/{event_id}/event_periods/{event_period_id}/check_ins", **params
+        )
+        filled_data_model = convert_response_data_to_list_of_model(
+            response, PcoEventPeriodCheckInsModel
+        )
+        return filled_data_model
+
+    def get_event_times_for_period(
+        self, event_id: int, event_period_id: int
+    ) -> list[PcoEventTimesModel]:
+        response = self.api.get(
+            f"/check-ins/v2/events/{event_id}/event_periods/{event_period_id}/event_times"
+        )
+        filled_data_model = convert_response_data_to_list_of_model(response, PcoEventTimesModel)
         return filled_data_model

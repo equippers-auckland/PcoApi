@@ -1,0 +1,39 @@
+{
+    "data": {
+        "type": "Event",
+        "id": "1234",
+        "attributes": {
+            "archived_at": null,
+            "created_at": "2017-05-06T01:40:01Z",
+            "enable_services_integration": true,
+            "frequency": "Weekly",
+            "integration_key": null,
+            "location_times_enabled": true,
+            "name": ".North Shore Sunday",
+            "pre_select_enabled": true,
+            "updated_at": "2023-07-09T05:14:22Z"
+        },
+        "links": {
+            "attendance_types": "https://api.planningcenteronline.com/check-ins/v2/events/1234/attendance_types",
+            "check_ins": "https://api.planningcenteronline.com/check-ins/v2/events/1234/check_ins",
+            "current_event_times": "https://api.planningcenteronline.com/check-ins/v2/events/1234/current_event_times",
+            "event_labels": "https://api.planningcenteronline.com/check-ins/v2/events/1234/event_labels",
+            "event_periods": "https://api.planningcenteronline.com/check-ins/v2/events/1234/event_periods",
+            "locations": "https://api.planningcenteronline.com/check-ins/v2/events/1234/locations",
+            "person_events": "https://api.planningcenteronline.com/check-ins/v2/events/1234/person_events",
+            "self": "https://api.planningcenteronline.com/check-ins/v2/events/1234",
+            "html": "https://check-ins.planningcenteronline.com/events/1234"
+        }
+    },
+    "included": [],
+    "meta": {
+        "can_include": [
+            "attendance_types",
+            "event_periods"
+        ],
+        "parent": {
+            "id": "1234",
+            "type": "Organization"
+        }
+    }
+}

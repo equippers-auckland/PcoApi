@@ -14,6 +14,7 @@ import json
 from os import environ
 from pathlib import Path
 from typing import Callable, Generator
+from unittest.mock import patch
 
 from _pytest.nodes import Item
 from dotenv import load_dotenv
@@ -42,6 +43,14 @@ def unit_test_mocks(monkeypatch: None) -> None:
 @pytest.fixture
 def setup_real_api() -> Generator[PcoApi, None, None]:
     yield PcoApi(application_id=environ["PCO_USER"], secret=environ["PCO_PASSWD"])
+
+
+@pytest.fixture
+def setup_mocked_api() -> Generator[PcoApi, None, None]:
+    with patch("pcoapi.pypco_wrapper.pypco.PCO", autospec=True) as mock_pypco_pco:
+        pcoapi_instance = PcoApi(application_id="1234", secret="5678")
+        pcoapi_instance.api = mock_pypco_pco.return_value
+    yield pcoapi_instance
 
 
 @pytest.fixture

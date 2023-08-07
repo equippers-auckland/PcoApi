@@ -27,7 +27,7 @@ def mock_pypco_pco() -> Generator[Mock, None, None]:
 
 @fixture
 def pypco_wrapper_instance() -> Generator[PyPcoWrapper, None, None]:
-    with patch("pcoapi.pypco_wrapper.pypco.PCO", autospec=True) as mock_pypco_pco:
+    with patch("pcoapi.pypco_wrapper.OverloadedPco", autospec=True) as mock_pypco_pco:
         pypcowrapper_instance = PyPcoWrapper(application_id="1234", secret="5678")
         pypcowrapper_instance.pco = mock_pypco_pco.return_value
     yield pypcowrapper_instance
@@ -39,14 +39,14 @@ class TestPyPcoWrapper:
         with pytest.raises(PCOCredentialsException):
             PyPcoWrapper()
 
-    @patch("pcoapi.pypco_wrapper.pypco.PCO", autospec=True)
+    @patch("pcoapi.pypco_wrapper.OverloadedPco", autospec=True)
     def test_init_with_api_key_and_secret(self, mock_pypco_pco: Mock) -> None:
         PyPcoWrapper(application_id="1234", secret="5678")
         args, kwargs = mock_pypco_pco.call_args
         assert kwargs["application_id"] == "1234"
         assert kwargs["secret"] == "5678"
 
-    @patch("pcoapi.pypco_wrapper.pypco.PCO", autospec=True)
+    @patch("pcoapi.pypco_wrapper.OverloadedPco", autospec=True)
     def test_init_with_token(self, mock_pypco_pco: Mock) -> None:
         PyPcoWrapper(token="1234")
         args, kwargs = mock_pypco_pco.call_args
@@ -95,9 +95,9 @@ class TestPyPcoWrapper:
                 url="/services/v2/event_times",
                 params="Test",
             )
-            == pypco_wrapper_instance.pco.get.return_value
+            == pypco_wrapper_instance.pco.get.return_value  # type: ignore
         )
-        pypco_wrapper_instance.pco.get.assert_called_once_with(
+        pypco_wrapper_instance.pco.get.assert_called_once_with(  # type: ignore
             url="/services/v2/event_times", params="Test"
         )
 

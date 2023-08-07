@@ -1,0 +1,507 @@
+{
+    "links": {
+        "self": "https://api.planningcenteronline.com/check-ins/v2/events/109354/attendance_types"
+    },
+    "data": [
+        {
+            "type": "AttendanceType",
+            "id": "17349",
+            "attributes": {
+                "color": "#c0a0d2",
+                "created_at": "2017-05-06T01:42:38Z",
+                "limit": null,
+                "name": "(4) Prayer",
+                "updated_at": "2021-03-03T21:54:12Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17349"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17350",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T01:44:44Z",
+                "limit": null,
+                "name": "(2) PR Baby",
+                "updated_at": "2021-03-03T21:57:55Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17350"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17351",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T01:45:00Z",
+                "limit": null,
+                "name": "(2) PR Adult",
+                "updated_at": "2021-03-03T21:57:50Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17351"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17352",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T01:45:15Z",
+                "limit": null,
+                "name": "(2) Spk Kid",
+                "updated_at": "2021-03-03T22:07:29Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17352"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17353",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T01:45:29Z",
+                "limit": null,
+                "name": "(2) Spk Ldr",
+                "updated_at": "2021-03-03T22:07:19Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17353"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17354",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T01:45:49Z",
+                "limit": null,
+                "name": "(2) Boom Kid",
+                "updated_at": "2021-03-03T21:57:32Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17354"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17355",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T01:46:07Z",
+                "limit": null,
+                "name": "(2) Boom Ldr",
+                "updated_at": "2021-03-03T21:57:36Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17355"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17356",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T01:46:35Z",
+                "limit": null,
+                "name": "(2) Msve Kid",
+                "updated_at": "2021-03-03T21:57:41Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17356"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17357",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T04:07:54Z",
+                "limit": null,
+                "name": "(2) Msve Ldr",
+                "updated_at": "2021-03-03T21:57:45Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17357"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "17358",
+            "attributes": {
+                "color": "#78afce",
+                "created_at": "2017-05-06T04:08:14Z",
+                "limit": null,
+                "name": "(1) Adtrium",
+                "updated_at": "2021-03-03T21:57:27Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/17358"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46151",
+            "attributes": {
+                "color": "#fab676",
+                "created_at": "2018-06-13T08:29:03Z",
+                "limit": null,
+                "name": "(5) Host",
+                "updated_at": "2021-03-03T21:54:51Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46151"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46152",
+            "attributes": {
+                "color": "#fab676",
+                "created_at": "2018-06-13T08:37:48Z",
+                "limit": null,
+                "name": "(5) Prod",
+                "updated_at": "2021-03-03T21:55:21Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46152"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46153",
+            "attributes": {
+                "color": "#fab676",
+                "created_at": "2018-06-13T08:38:17Z",
+                "limit": null,
+                "name": "(5) Worship",
+                "updated_at": "2021-03-03T21:54:35Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46153"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46154",
+            "attributes": {
+                "color": "#fab676",
+                "created_at": "2018-06-13T08:38:47Z",
+                "limit": null,
+                "name": "(5) Kids",
+                "updated_at": "2021-03-03T21:55:06Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46154"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46155",
+            "attributes": {
+                "color": "#fab676",
+                "created_at": "2018-06-13T08:39:12Z",
+                "limit": null,
+                "name": "(5) Black",
+                "updated_at": "2021-03-03T21:55:44Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46155"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46156",
+            "attributes": {
+                "color": "#9ccc79",
+                "created_at": "2018-06-13T08:40:32Z",
+                "limit": null,
+                "name": "(3) Crds Out",
+                "updated_at": "2021-03-03T21:58:26Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46156"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46157",
+            "attributes": {
+                "color": "#9ccc79",
+                "created_at": "2018-06-13T08:40:32Z",
+                "limit": null,
+                "name": "(3) Salv Rec",
+                "updated_at": "2021-03-03T21:58:41Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46157"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46158",
+            "attributes": {
+                "color": "#9ccc79",
+                "created_at": "2018-06-13T08:40:32Z",
+                "limit": null,
+                "name": "(3) Salv New",
+                "updated_at": "2021-03-03T21:58:35Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46158"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "46159",
+            "attributes": {
+                "color": "#9ccc79",
+                "created_at": "2018-06-13T08:40:32Z",
+                "limit": null,
+                "name": "(3) Crds In",
+                "updated_at": "2021-03-03T21:58:19Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/46159"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "117827",
+            "attributes": {
+                "color": "#c0a0d2",
+                "created_at": "2020-10-31T22:09:51Z",
+                "limit": null,
+                "name": "(4) Equip",
+                "updated_at": "2021-03-03T21:54:02Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/117827"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "126898",
+            "attributes": {
+                "color": "#fab676",
+                "created_at": "2021-03-03T21:55:58Z",
+                "limit": null,
+                "name": "(5) Red",
+                "updated_at": "2021-03-03T21:55:58Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/126898"
+            }
+        },
+        {
+            "type": "AttendanceType",
+            "id": "126899",
+            "attributes": {
+                "color": "#fab676",
+                "created_at": "2021-03-03T21:56:36Z",
+                "limit": null,
+                "name": "(5) NC",
+                "updated_at": "2021-03-03T21:56:45Z"
+            },
+            "relationships": {
+                "event": {
+                    "data": {
+                        "type": "Event",
+                        "id": "1234"
+                    }
+                }
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/check-ins/v2/attendance_types/126899"
+            }
+        }
+    ],
+    "included": [],
+    "meta": {
+        "total_count": 22,
+        "count": 22,
+        "can_query_by": [
+            "id",
+            "name"
+        ],
+        "can_include": [
+            "event"
+        ],
+        "parent": {
+            "id": "1234",
+            "type": "Event"
+        }
+    }
+}

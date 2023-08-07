@@ -6,9 +6,9 @@
 from __future__ import annotations
 
 import sys
-from typing import Dict, List, TypedDict, TypeVar, Union
+from typing import Callable, Dict, List, TypedDict, TypeVar, Union
 
-from pcoapi.models import PcoBaseModel
+from pcoapi.models.base_models import PcoBaseModel
 
 if sys.version_info >= (3, 10):
     # noinspection PyCompatibility
@@ -24,6 +24,11 @@ JsonArrayType = List[JsonValueType]
 """List that can be returned by the standard JSON deserializing process."""
 JsonObjectType = Dict[str, JsonValueType]
 """Dictionary that can be returned by the standard JSON deserializing process."""
+
+GeneratorJsonType = Callable[[str], JsonObjectType]
+"""Callable that returns a JSON object from a file path."""
+
+PcoParamsType = Union[Dict[str, str], str, None]
 
 
 class PcoDataType(TypedDict):
@@ -56,7 +61,7 @@ T_Model = TypeVar("T_Model", bound=PcoBaseModel)
 def convert_response_data_to_list_of_model(
     response: PcoResponseType, model_class: type[T_Model]
 ) -> list[T_Model]:
-    if "data" not in response.keys():
+    if "data" not in response:
         raise ValueError("Response does not contain data.")
     assert isinstance(response["data"], list)
     return [model_class(**item) for item in response["data"]]
@@ -65,7 +70,7 @@ def convert_response_data_to_list_of_model(
 def convert_response_data_to_model(
     response: PcoResponseType, model_class: type[T_Model]
 ) -> T_Model:
-    if "data" not in response.keys():
+    if "data" not in response:
         raise ValueError("Response does not contain data.")
     assert isinstance(response["data"], dict)
     return model_class(**response["data"])
