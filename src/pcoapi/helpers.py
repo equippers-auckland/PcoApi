@@ -28,6 +28,8 @@ JsonObjectType = Dict[str, JsonValueType]
 GeneratorJsonType = Callable[[str], JsonObjectType]
 """Callable that returns a JSON object from a file path."""
 
+PcoParamsType = Union[Dict[str, str], str, None]
+
 
 class PcoDataType(TypedDict):
     type: str
@@ -59,7 +61,7 @@ T_Model = TypeVar("T_Model", bound=PcoBaseModel)
 def convert_response_data_to_list_of_model(
     response: PcoResponseType, model_class: type[T_Model]
 ) -> list[T_Model]:
-    if "data" not in response.keys():
+    if "data" not in response:
         raise ValueError("Response does not contain data.")
     assert isinstance(response["data"], list)
     return [model_class(**item) for item in response["data"]]
@@ -68,7 +70,7 @@ def convert_response_data_to_list_of_model(
 def convert_response_data_to_model(
     response: PcoResponseType, model_class: type[T_Model]
 ) -> T_Model:
-    if "data" not in response.keys():
+    if "data" not in response:
         raise ValueError("Response does not contain data.")
     assert isinstance(response["data"], dict)
     return model_class(**response["data"])

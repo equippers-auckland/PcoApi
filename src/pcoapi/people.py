@@ -6,7 +6,11 @@
 
 from __future__ import annotations
 
-from pcoapi.helpers import convert_response_data_to_list_of_model, convert_response_data_to_model
+from pcoapi.helpers import (
+    PcoParamsType,
+    convert_response_data_to_list_of_model,
+    convert_response_data_to_model,
+)
 from pcoapi.models.people_models import PcoListModel, PcoPersonFieldDataModel, PcoPersonModel
 from pcoapi.pypco_wrapper import PyPcoWrapper
 
@@ -64,7 +68,7 @@ class Lists:
         try:
             pco_list = self.get_by_name(name)[closest_index]
         except IndexError:
-            raise IndexError(f"Could not find a list named {name}")
+            raise IndexError(f"Could not find a list named {name}") from IndexError
         return pco_list
 
 
@@ -72,7 +76,7 @@ class People:
     def __init__(self, pcoapi: PyPcoWrapper) -> None:
         self.api = pcoapi
 
-    def get_field_data(self, id: int, **params) -> list[PcoPersonFieldDataModel]:
+    def get_field_data(self, id: int, **params: PcoParamsType) -> list[PcoPersonFieldDataModel]:
         response = self.api.get(f"/people/v2/people/{id}/field_data", **params)
         data_model = convert_response_data_to_list_of_model(response, PcoPersonFieldDataModel)
         return data_model

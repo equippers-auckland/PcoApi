@@ -8,7 +8,7 @@ from typing import Any, Iterator
 import pypco
 import requests
 
-from pcoapi.helpers import PcoResponseType
+from pcoapi.helpers import PcoParamsType, PcoResponseType
 
 
 # noinspection Mypy
@@ -30,7 +30,7 @@ class OverloadedPco(pypco.PCO):  # type: ignore
             response["data"] = response["data"].__add__(next_response["data"])  # type: ignore
         return response
 
-    def limited_get(self, url: str, **params) -> PcoResponseType:
+    def limited_get(self, url: str, **params: PcoParamsType) -> PcoResponseType:
         response: PcoResponseType = super().get(url, **params)
         return response
 
@@ -63,13 +63,13 @@ class PyPcoWrapper:
             timeout_retries=timeout_retries,
         )
 
-    def request_response(  # type: ignore
+    def request_response(
         self,
         method: str,
         url: str,
         payload: Any | None | None = None,  # pylint: disable=unsubscriptable-object
         upload: str | None = None,  # pylint: disable=unsubscriptable-object
-        **params,
+        **params: PcoParamsType,
     ) -> requests.Response:
         """A generic entry point for making a managed request against PCO.
 
@@ -107,7 +107,7 @@ class PyPcoWrapper:
         url: str,
         payload: Any | None = None,  # pylint: disable=unsubscriptable-object
         upload: str | None = None,  # pylint: disable=unsubscriptable-object
-        **params: str,
+        **params: PcoParamsType,
     ) -> dict[Any, Any] | None:  # pylint: disable=unsubscriptable-object
         """A generic entry point for making a managed request against PCO.
 
@@ -137,7 +137,7 @@ class PyPcoWrapper:
         )
 
     def get(
-        self, url: str, **params: str
+        self, url: str, **params: PcoParamsType
     ) -> PcoResponseType:  # pylint: disable=unsubscriptable-object
         """Perform a GET request against the PCO API.
 
@@ -162,14 +162,14 @@ class PyPcoWrapper:
         """
         return self.pco.get(url=url, **params)
 
-    def limited_get(self, url: str, **params) -> PcoResponseType:
+    def limited_get(self, url: str, **params: PcoParamsType) -> PcoResponseType:
         return self.pco.limited_get(url=url, **params)
 
     def post(
         self,
         url: str,
         payload: dict | None = None,  # type: ignore
-        **params: str,  # pylint: disable=unsubscriptable-object
+        **params: PcoParamsType,  # pylint: disable=unsubscriptable-object
     ) -> dict | None:  # type: ignore  # pylint: disable=unsubscriptable-object
         """Perform a POST request against the PCO API.
 
@@ -201,7 +201,7 @@ class PyPcoWrapper:
         self,
         url: str,
         payload: dict | None = None,  # type: ignore
-        **params: str,  # pylint: disable=unsubscriptable-object
+        **params: PcoParamsType,  # pylint: disable=unsubscriptable-object
     ) -> dict | None:  # type: ignore  # pylint: disable=unsubscriptable-object
         """Perform a PATCH request against the PCO API.
 
@@ -229,7 +229,7 @@ class PyPcoWrapper:
 
         return self.pco.patch(url=url, payload=payload, **params)  # type: ignore
 
-    def delete(self, url: str, **params: str) -> requests.Response:
+    def delete(self, url: str, **params: PcoParamsType) -> requests.Response:
         """Perform a DELETE request against the PCO API.
 
         Performs a fully managed DELETE request (handles ratelimiting, timeouts, etc.).
@@ -300,8 +300,8 @@ class PyPcoWrapper:
             url=url, offset=offset, per_page=per_page, **params
         )
 
-    def upload(  # type: ignore
-        self, file_path: str, **params
+    def upload(
+        self, file_path: str, **params: PcoParamsType
     ) -> dict | None:  # type: ignore # pylint: disable=unsubscriptable-object
         """Upload the file at the specified path to PCO.
 
