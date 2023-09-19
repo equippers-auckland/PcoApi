@@ -13,7 +13,7 @@ jobs:
       matrix:
         python-version: [ "3.8", "3.9", "3.10", "3.11" ]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         run: pipx install poetry==${POETRY_VERSION}
       - name: Set up Python ${{ matrix.python-version }}
@@ -41,7 +41,7 @@ jobs:
           - { nox-session: type_check, poetry-groups: "type_check,main,dev" }
           - { nox-session: docs, poetry-groups: "docs" }
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         run: pipx install poetry==${POETRY_VERSION}
       - name: Set up Python
@@ -56,7 +56,7 @@ jobs:
   poetry-check:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         run: pipx install poetry==${POETRY_VERSION}
       - name: Set up Python
