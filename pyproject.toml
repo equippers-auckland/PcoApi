@@ -34,7 +34,7 @@ rich = "*"
 typer = { version = "*", extras = ["all"] }
 pypco = { git = "https://github.com/billdeitrick/pypco.git", tag = "v1.2.0"}
 pydantic = "^2.3.0"
-faker = "^19.3.0"
+faker = "^19.6.1"
 
 [tool.poetry.group.nox.dependencies]
 nox-poetry = "*"
